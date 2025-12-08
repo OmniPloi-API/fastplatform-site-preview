@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - FAST Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(180deg, #f5f7fb 0%, #eef5ee 100%);
+        }
+        
+        .nav-soft {
+            background: #8EDCA9;
+            border-bottom: 1px solid #7ac69b;
+        }
+        
+        .case-card {
+            transition: all 0.3s ease;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(29, 185, 84, 0.3);
+        }
+        
+        .filter-button {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-button.active {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            color: white;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 185, 84, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1DB954;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .metric-highlight {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+    </style>
+</head>
+<body class="bg-[#f5f7fb] text-slate-900">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
+        <div class="flex flex-1 items-stretch justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-stretch">
+                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
+            </a>
+            
+            <!-- Menu Links -->
+            <div class="hidden md:flex items-center space-x-8 pr-8">
+                <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
+                <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
+                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
+                <a href="case-studies.html" class="nav-link text-slate-900">Case Studies</a>
+                <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
+                <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
+            </div>
+                
+                <!-- CTA Button -->
+                <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-white font-semibold inline-flex items-center justify-center">
+                    Request a Demo
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-900">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-8">
+        <div class="container mx-auto px-6">
+            <div class="text-center space-y-3">
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+                    FAST Results,<br>
+                    <span class="text-emerald-600">REAL Success.</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Discover how leading organizations are transforming their fisheries operations with FAST Platform, achieving unprecedented efficiency and accuracy.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#case-filters" class="cta-button px-8 py-4 rounded-full text-white font-semibold text-lg inline-flex items-center justify-center">
+                        View All Success Stories
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Lobster Cooperative Project Video -->
+    <section class="py-20 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <video class="rounded-2xl shadow-2xl w-full" autoplay muted loop playsinline controls>
+                        <source src="media/lobster-measuring-slowmo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Lobster Cooperative Project</h2>
+                    <p class="text-slate-600 mb-4">
+                        Fast to Slow-Motion view of automated lobster length measurement from a fisher cooperative deployment.
+                    </p>
+                    <p class="text-slate-600 text-sm">
+                        Each lobster is captured once on video, with FAST automatically detecting the animal and calculating standardized measurements in the background.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Filter Section -->
+    <section id="case-filters" class="py-8 bg-slate-100 sticky top-16 z-40">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center space-x-4">
+                <span class="text-slate-600 mr-4">Filter by:</span>
+                <button class="filter-button active px-4 py-2 rounded-full border border-emerald-500 text-slate-900" onclick="filterCases('all')">
+                    All Cases
+                </button>
+                <button class="filter-button px-4 py-2 rounded-full border border-emerald-500 text-slate-900" onclick="filterCases('government')">
+                    Government
+                </button>
+                <button class="filter-button px-4 py-2 rounded-full border border-emerald-500 text-slate-900" onclick="filterCases('commercial')">
+                    Commercial
+                </button>
+                <button class="filter-button px-4 py-2 rounded-full border border-emerald-500 text-slate-900" onclick="filterCases('research')">
+                    Research
+                </button>
+                <button class="filter-button px-4 py-2 rounded-full border border-emerald-500 text-slate-900" onclick="filterCases('region')">
+                    Region
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Studies Grid -->
+    <section id="all-cases" class="py-20 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="casesGrid">
+                <!-- Case Study 1 -->
+                <div class="case-card rounded-2xl overflow-hidden" data-category="government research" data-case-id="hammerhead">
+                    <img src="media/fast-hammerhead.png" alt="Hammerhead Shark Project" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-fish text-sm"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600">Research Project</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Hammerhead Shark ID Project</h3>
+                        <p class="text-slate-600">Achieves 99% accuracy in species identification and measurement for critical conservation research.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-600 px-3 py-1 rounded-full text-sm text-white">99% Accuracy</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full text-sm text-white">NOAA Partnership</span>
+                        </div>
+                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Read Full Story →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2 -->
+                <div class="case-card rounded-2xl overflow-hidden" data-category="commercial" data-case-id="tuna">
+                    <img src="media/fast-tuna.png" alt="Tuna Fleet Optimization" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-ship text-sm"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600">Commercial Fleet</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Pacific Tuna Fleet Optimization</h3>
+                        <p class="text-slate-600">Commercial fishing company reduces data collection costs by 75% while improving regulatory compliance.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-600 px-3 py-1 rounded-full text-sm text-white">75% Cost Savings</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full text-sm text-white">10x Faster</span>
+                        </div>
+                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Read Full Story →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Case Study 3 (now Coral on top row) -->
+                <div class="case-card rounded-2xl overflow-hidden" data-category="government research" data-case-id="coral">
+                    <img src="media/fast-coral-reef.png" alt="Coral Reef Monitoring" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-water text-sm"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600">Conservation</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Coral Reef Fish Monitoring</h3>
+                        <p class="text-slate-600">Marine protected area uses FAST Platform for non-invasive fish population monitoring.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-600 px-3 py-1 rounded-full text-sm text-white">Non-invasive</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full text-sm text-white">Conservation</span>
+                        </div>
+                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Read Full Story →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Case Study 4 -->
+                <div class="case-card rounded-2xl overflow-hidden" data-category="research" data-case-id="marine">
+                    <img src="media/fast-marine-univeristy.png" alt="University Research" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-microscope text-sm"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600">University Research</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Marine Biology Longitudinal Study</h3>
+                        <p class="text-slate-600">Research university collects 5x more data points for groundbreaking climate impact studies.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-600 px-3 py-1 rounded-full text-sm text-white">5x Data Points</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full text-sm text-white">Grant Success</span>
+                        </div>
+                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Read Full Story →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Case Study 5 -->
+                <div class="case-card rounded-2xl overflow-hidden" data-category="commercial region" data-case-id="alaska">
+                    <img src="media/fast-alaska.png" alt="Alaska Fisheries" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-snowflake text-sm"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600">Regional Operation</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Alaska Salmon Fishery Modernization</h3>
+                        <p class="text-slate-600">Regional fishing cooperative modernizes operations while preserving traditional fishing methods.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-600 px-3 py-1 rounded-full text-sm text-white">60% Labor Savings</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full text-sm text-white">Alaska Region</span>
+                        </div>
+                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Read Full Story →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Case Study 6 (now Atlantic on bottom row) -->
+                <div class="case-card rounded-2xl overflow-hidden" data-category="government" data-case-id="atlantic">
+                    <img src="https://picsum.photos/seed/atlantic/400/250" alt="Atlantic Stock Assessment" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-landmark text-sm"></i>
+                            </div>
+                            <span class="text-sm text-emerald-600">Government Agency</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Atlantic Stock Assessment Program</h3>
+                        <p class="text-slate-600">Federal agency transforms stock assessment accuracy with standardized, real-time data collection.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-600 px-3 py-1 rounded-full text-sm text-white">40% Better Data</span>
+                            <span class="bg-slate-700 px-3 py-1 rounded-full text-sm text-white">Real-time</span>
+                        </div>
+                        <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            Read Full Story →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Individual Case Study Template (Hidden by default) -->
+    <div id="caseStudyModal" class="fixed inset-0 bg-black/80 z-50 hidden overflow-y-auto">
+        <div class="min-h-screen px-4 py-8">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden">
+                <!-- Modal Header -->
+                <div class="relative">
+                    <img id="modalImage" src="" alt="" class="w-full h-64 object-cover">
+                    <button onclick="closeCaseStudy()" class="absolute top-4 right-4 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center hover:bg-black/70 transition-colors">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Modal Content -->
+                <div class="p-8 space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div id="modalIcon" class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <div>
+                            <h2 id="modalTitle" class="text-3xl font-bold text-slate-900">Case Study Title</h2>
+                            <span id="modalCategory" class="text-emerald-600">Category</span>
+                        </div>
+                    </div>
+                    
+                    <!-- At-a-Glance Metrics -->
+                    <div class="metric-highlight rounded-xl p-6">
+                        <h3 class="text-xl font-bold mb-4">At-a-Glance</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div id="metric1" class="text-3xl font-bold">10x</div>
+                                <div id="metric1Label" class="text-sm opacity-80">Faster Processing</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="metric2" class="text-3xl font-bold">75%</div>
+                                <div id="metric2Label" class="text-sm opacity-80">Cost Savings</div>
+                            </div>
+                            <div class="text-center">
+                                <div id="metric3" class="text-3xl font-bold">99%</div>
+                                <div id="metric3Label" class="text-sm opacity-80">Accuracy</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- The Challenge -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-slate-900">The Challenge</h3>
+                        <p id="challengeText" class="text-slate-600 leading-relaxed">
+                            Challenge description goes here...
+                        </p>
+                    </div>
+                    
+                    <!-- The Solution -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-slate-900">The Solution</h3>
+                        <p id="solutionText" class="text-slate-600 leading-relaxed">
+                            Solution description goes here...
+                        </p>
+                    </div>
+                    
+                    <!-- The Results -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-slate-900">The Results</h3>
+                        <p id="resultsText" class="text-slate-600 leading-relaxed mb-4">
+                            Results description goes here...
+                        </p>
+                        <blockquote class="border-l-4 border-emerald-500 pl-4 italic text-slate-600">
+                            <p id="testimonialText">"Client testimonial goes here..."</p>
+                            <footer class="mt-2 text-sm">
+                                <cite id="testimonialAuthor">- Client Name, Position</cite>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    
+                    <!-- CTA -->
+                    <div class="flex justify-center">
+                        <button class="cta-button px-8 py-3 rounded-full text-white font-semibold">
+                            Start Your Success Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <section class="py-20 bg-emerald-600">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ready to Write Your Success Story?
+            </h2>
+            <p class="text-xl mb-8 opacity-90">
+                Join the organizations already transforming their operations with FAST Platform
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="contact.html?inquiry=sales#contact-form" class="bg-white text-emerald-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                    Start Your Project
+                </a>
+                <a href="contact.html?inquiry=demo#contact-form" class="border-2 border-white px-8 py-4 rounded-full text-white font-semibold text-lg hover:bg-white hover:text-emerald-600 transition-colors inline-flex items-center justify-center">
+                    Schedule Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo & Mission -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="media/fast-platform-logo2.0.png" alt="FAST Platform" class="h-10 w-auto object-contain rounded-lg">
+                        <span class="font-semibold text-white">FAST Platform</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">
+                        Bringing real, working AI technology to fisheries management for a sustainable future.
+                    </p>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
+                        <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
+                        <li><a href="solutions.html" class="hover:text-cyan-400 transition-colors">Solutions</a></li>
+                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
+                        <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-cyan-500"></i>
+                            <span>info@fastplatform.tech</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (772) 555-0123 (Primary)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (804) 684-9522 (WhatsApp)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-cyan-500"></i>
+                            <span>5521 SE Nassau Terrace, Stuart, Florida 34997, United States</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Legal</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800/50 mt-8 pt-8 text-center text-slate-600 text-sm">
+                <p>&copy; 2025 FASTPLATFORM.TECH All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Case study data
+        const caseStudies = {
+            hammerhead: {
+                title: "Hammerhead Shark ID Project",
+                category: "Research Project",
+                icon: "fa-fish",
+                image: "media/fast-hammerhead.png",
+                metrics: ["99%", "Accuracy", "2x", "Data Points", "NOAA", "Partner"],
+                challenge: "Marine biologists at a leading research institute were struggling with manual identification and measurement of hammerhead sharks for critical population studies. The traditional process was time-consuming, prone to human error, and required multiple trained specialists.",
+                solution: "FAST Platform was deployed to automate species identification and measurement. The AI engine was trained specifically on hammerhead shark morphology, achieving unprecedented accuracy in identifying key anatomical landmarks.",
+                results: "The project achieved 99% accuracy in species identification and sub-millimeter precision in measurements. Researchers were able to collect 2x more data points in the same time period, dramatically expanding the scope and reliability of their population studies.",
+                testimonial: "FAST Platform has revolutionized our research capabilities. We're now able to collect data that was previously impossible to obtain at this scale and accuracy.",
+                author: "Dr. Sarah Chen, Marine Biology Institute"
+            },
+            tuna: {
+                title: "Pacific Tuna Fleet Optimization",
+                category: "Commercial Fleet",
+                icon: "fa-ship",
+                image: "media/fast-tuna.png",
+                metrics: ["75%", "Cost Savings", "10x", "Faster", "4→1", "People"],
+                challenge: "A commercial tuna fishing company was facing rising labor costs and increasing regulatory requirements. Their manual data collection process required 4 crew members per shift and was prone to errors that led to compliance issues.",
+                solution: "FAST Platform was implemented across their fleet of 12 vessels. The system was integrated with existing onboard systems and crew members were trained in a single afternoon.",
+                results: "The company reduced data collection costs by 75% by cutting crew requirements from 4 people to 1. Processing time improved by 10x, and compliance violations dropped to zero. The ROI was achieved within 6 months.",
+                testimonial: "I was skeptical at first, but FAST Platform paid for itself in half a year. It's transformed how we operate.",
+                author: "Captain Mike Rodriguez, Pacific Tuna Co."
+            },
+            atlantic: {
+                title: "Atlantic Stock Assessment Program",
+                category: "Government Agency",
+                icon: "fa-landmark",
+                image: "https://picsum.photos/seed/atlantic/800/400",
+                metrics: ["40%", "Better Data", "Real-time", "Monitoring", "3x", "Survey Coverage"],
+                challenge: "A federal agency needed more reliable, timely stock assessment data across multiple Atlantic fisheries but was constrained by manual survey methods and inconsistent reporting.",
+                solution: "FAST Platform standardized digital data collection across ports and vessels, streaming catch and biological data directly into the agency's assessment models.",
+                results: "Stock assessment uncertainty was reduced by 40%, real-time indicators became available for managers, and survey coverage expanded without increasing field staff.",
+                testimonial: "FAST has given us a live view of stocks that we simply didn't have before.",
+                author: "Lead Scientist, Atlantic Assessment Program"
+            },
+            marine: {
+                title: "Marine Biology Longitudinal Study",
+                category: "University Research",
+                icon: "fa-microscope",
+                image: "media/fast-marine-univeristy.png",
+                metrics: ["5x", "Data Points", "3x", "Study Duration", "100%", "Digital"],
+                challenge: "A university research lab needed long-term, standardized measurements to understand how climate change is affecting fish communities, but graduate-student-based sampling was inconsistent and time-limited.",
+                solution: "The lab deployed FAST Platform at key landing sites, automating measurements and species IDs while streaming data into their existing analysis pipeline.",
+                results: "Researchers collected 5x more usable data over a 3x longer window, unlocking new longitudinal analyses and strengthening grant proposals.",
+                testimonial: "FAST turned our fieldwork from a bottleneck into a competitive advantage for our science.",
+                author: "Dr. Elena Martínez, Marine Biology Department"
+            },
+            alaska: {
+                title: "Alaska Salmon Fishery Modernization",
+                category: "Regional Operation",
+                icon: "fa-snowflake",
+                image: "media/fast-alaska.png",
+                metrics: ["60%", "Labor Savings", "30%", "Faster Turnaround", "24/7", "Traceability"],
+                challenge: "A regional salmon cooperative in Alaska needed to modernize dockside sampling while protecting traditional fishing practices and tight seasonal windows.",
+                solution: "FAST Platform was installed at cooperative grading lines, capturing standardized measurements and images for every fish without slowing down operations.",
+                results: "Labor demands for data collection dropped by 60%, processing lines moved 30% faster, and buyers gained full digital traceability for each harvest.",
+                testimonial: "We modernized our data without losing what makes this fishery special.",
+                author: "Co-op Manager, Alaska Salmon Fishery"
+            },
+            coral: {
+                title: "Coral Reef Fish Monitoring",
+                category: "Conservation",
+                icon: "fa-water",
+                image: "media/fast-coral-reef.png",
+                metrics: ["Non-invasive", "Monitoring", "2x", "Sites Covered", "0", "Additional Mortality"],
+                challenge: "Managers of a marine protected area needed higher-resolution data on reef fish populations without increasing diver effort or disturbing sensitive habitats.",
+                solution: "FAST Platform was paired with stationary and diver-operated cameras, automating species ID and size estimates from video collected on routine patrols.",
+                results: "Monitoring coverage doubled without adding dive days, and managers gained a non-invasive, auditable record of reef conditions.",
+                testimonial: "We're finally able to see changes across the whole reef system, not just a few sample sites.",
+                author: "Monitoring Lead, Coral Reef Reserve"
+            }
+        };
+        
+        function filterCases(category) {
+            // Update active button
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter case cards
+            const cards = document.querySelectorAll('.case-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        function openCaseStudy(caseId) {
+            const study = caseStudies[caseId];
+            if (!study) return;
+            
+            // Populate modal
+            document.getElementById('modalImage').src = study.image;
+            document.getElementById('modalTitle').textContent = study.title;
+            document.getElementById('modalCategory').textContent = study.category;
+            document.getElementById('modalIcon').innerHTML = `<i class="fas ${study.icon}"></i>`;
+            
+            document.getElementById('metric1').textContent = study.metrics[0];
+            document.getElementById('metric1Label').textContent = study.metrics[1];
+            document.getElementById('metric2').textContent = study.metrics[2];
+            document.getElementById('metric2Label').textContent = study.metrics[3];
+            document.getElementById('metric3').textContent = study.metrics[4];
+            document.getElementById('metric3Label').textContent = study.metrics[5];
+            
+            document.getElementById('challengeText').textContent = study.challenge;
+            document.getElementById('solutionText').textContent = study.solution;
+            document.getElementById('resultsText').textContent = study.results;
+            document.getElementById('testimonialText').textContent = study.testimonial;
+            document.getElementById('testimonialAuthor').textContent = study.author;
+            
+            // Show modal
+            document.getElementById('caseStudyModal').classList.remove('hidden');
+        }
+        
+        function closeCaseStudy() {
+            document.getElementById('caseStudyModal').classList.add('hidden');
+        }
+        
+        // Add click handlers to case cards
+        document.querySelectorAll('.case-card button').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const card = btn.closest('.case-card');
+                const caseId = card && card.dataset.caseId ? card.dataset.caseId : 'tuna';
+                openCaseStudy(caseId);
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

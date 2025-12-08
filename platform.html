@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Platform - FAST Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(180deg, #f5f7fb 0%, #eef5ee 100%);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            color: white;
+        }
+        
+        .nav-soft {
+            /* Use hero background green for navbar */
+            background: #8EDCA9;
+            border-bottom: 1px solid #7ac69b;
+        }
+        
+        .cta-gold {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 185, 84, 0.3);
+            background: linear-gradient(135deg, #1ed760 0%, #1DB954 100%);
+        }
+        
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #0f172a;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 185, 84, 0.25);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1DB954;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .rotating-model {
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-[#f5f7fb] text-slate-900">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
+        <div class="flex flex-1 items-stretch justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-stretch">
+                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
+            </a>
+            
+            <!-- Menu Links -->
+            <div class="hidden md:flex items-center space-x-8 pr-8">
+                <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
+                <a href="platform.html" class="nav-link text-slate-900">The Platform</a>
+                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
+                <a href="case-studies.html" class="nav-link text-slate-700 hover:text-slate-900">Case Studies</a>
+                <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
+                <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
+            </div>
+                
+                <!-- CTA Button -->
+                <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-white font-semibold inline-flex items-center justify-center">
+                    Request a Demo
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-900">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-6">
+                    <h1 class="text-5xl md:text-6xl font-bold leading-tight text-slate-900">
+                        AI-Powered<br>
+                        <span class="text-emerald-600">Precision and Speed.</span>
+                    </h1>
+                    <p class="text-xl text-slate-600">
+                        Experience the cutting-edge technology that's revolutionizing fisheries data collection with unprecedented accuracy and efficiency.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#core-components" id="state-of-art-cta" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg shadow-emerald-500/30 transition-transform transform hover:-translate-y-0.5 inline-flex items-center justify-center">
+                            State-of-the-Art
+                        </a>
+                        <a href="#core-components" id="data-specs-cta" class="border-2 border-emerald-500 px-8 py-4 rounded-full text-emerald-600 font-semibold text-lg hover:bg-emerald-500 hover:text-white transition-colors inline-flex items-center justify-center">
+                            Data Specs
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Video -->
+                <div>
+                    <video class="w-full rounded-2xl shadow-2xl" autoplay muted loop playsinline>
+                        <source src="media/object-detection-raw.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Core Components Tabs -->
+    <section id="core-components" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Core Components</h2>
+                <p class="text-xl text-slate-600">Explore the technology behind the revolution</p>
+            </div>
+            
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center mb-8 space-x-4">
+                <button class="tab-button active px-6 py-3 rounded-full border border-emerald-500 mb-4 text-slate-900" onclick="showTab('hardware')">
+                    <i class="fas fa-microchip mr-2"></i> The Hardware
+                </button>
+                <button id="ai-tab" class="tab-button px-6 py-3 rounded-full border border-emerald-500 mb-4 text-slate-900" onclick="showTab('ai')">
+                    <i class="fas fa-brain mr-2"></i> The AI Engine
+                </button>
+                <button id="dashboard-tab" class="tab-button px-6 py-3 rounded-full border border-emerald-500 mb-4 text-slate-900" onclick="showTab('dashboard')">
+                    <i class="fas fa-chart-line mr-2"></i> The Data Dashboard
+                </button>
+            </div>
+            
+            <!-- Tab Content -->
+            <!-- Hardware Tab -->
+            <div id="hardware" class="tab-content active">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-bold text-emerald-600">Rugged Hardware for Field Use</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-shield-alt text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Military-Grade Durability</h4>
+                                    <p class="text-slate-600">IP67 rating, drop-resistant to 6 feet, operates in extreme temperatures (-20°C to 60°C)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-battery-full text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">All-Day Battery Life</h4>
+                                    <p class="text-slate-600">12+ hours continuous operation with hot-swappable battery packs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-wifi text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Connectivity Options</h4>
+                                    <p class="text-slate-600">Cellular, Wi-Fi, Bluetooth, and satellite communication capabilities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-camera text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Advanced Imaging System</h4>
+                                    <p class="text-slate-600">4K cameras with depth sensing and structured light for precise measurements</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="media/fastplat-white-bg.png" alt="FAST Platform hardware for field use" class="rounded-2xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Engine Tab -->
+            <div id="ai" class="tab-content">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="media/fish on board.png" alt="FAST Platform fish on board data capture" class="rounded-2xl shadow-2xl w-full">
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-bold text-emerald-600">State-of-the-Art AI Technology</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-fish text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Species Identification</h4>
+                                    <p class="text-slate-600">99.2% accuracy across 200+ species with continuous model improvement</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-ruler text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Keypoint Detection</h4>
+                                    <p class="text-slate-600">Sub-millimeter precision for length and girth measurements</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-weight text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Weight Estimation</h4>
+                                    <p class="text-slate-600">95% accuracy using advanced morphological analysis</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-rocket text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Real-Time Processing</h4>
+                                    <p class="text-slate-600">Under 2 seconds from capture to complete analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-bold text-emerald-600">Powerful Data Dashboard</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-chart-bar text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Real-Time Analytics</h4>
+                                    <p class="text-slate-600">Live data visualization with customizable dashboards and reports</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-download text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Data Export</h4>
+                                    <p class="text-slate-600">Export to CSV, JSON, and integrate with existing systems via API</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-users text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">User Management</h4>
+                                    <p class="text-slate-600">Role-based access control and audit trails for compliance</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-cloud text-sm"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg">Cloud Infrastructure</h4>
+                                    <p class="text-slate-600">Enterprise-grade security with automatic backups and redundancy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="media/gallery-batch.png" alt="FAST Platform AI engine gallery batch detection" class="rounded-2xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features & Benefits Grid -->
+    <section class="py-20 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Features & Benefits</h2>
+                <p class="text-xl text-slate-600">See how our features translate to real-world advantages</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="feature-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-camera text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Automated Image Capture</h4>
+                            <p class="text-slate-600 text-sm mb-2">Eliminates human error and standardizes data collection across all operators</p>
+                            <span class="text-emerald-600 font-semibold">Benefit: Consistent, reliable data every time</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-tachometer-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Real-Time Processing</h4>
+                            <p class="text-slate-600 text-sm mb-2">Complete analysis in under 2 seconds with immediate results display</p>
+                            <span class="text-emerald-600 font-semibold">Benefit: 10x faster than manual methods</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-database text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Cloud Synchronization</h4>
+                            <p class="text-slate-600 text-sm mb-2">Automatic data backup and multi-device access with offline capability</p>
+                            <span class="text-emerald-600 font-semibold">Benefit: Never lose data, work anywhere</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-cogs text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">API Integration</h4>
+                            <p class="text-slate-600 text-sm mb-2">RESTful API for seamless integration with existing fisheries management systems</p>
+                            <span class="text-emerald-600 font-semibold">Benefit: Fits into your existing workflow</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Enterprise Security</h4>
+                            <p class="text-slate-600 text-sm mb-2">End-to-end encryption, role-based access, and comprehensive audit trails</p>
+                            <span class="text-emerald-600 font-semibold">Benefit: Meets regulatory compliance requirements</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feature-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg mb-2">Continuous Learning</h4>
+                            <p class="text-slate-600 text-sm mb-2">AI models improve over time with new data and species updates</p>
+                            <span class="text-emerald-600 font-semibold">Benefit: System gets smarter with use</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20 bg-emerald-600">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- CTA Copy -->
+                <div class="text-center md:text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        From the Field to Your Dash in an Instant.
+                    </h2>
+                    <p class="text-xl mb-8 opacity-90">
+                        See how FAST fits into real fishing workflows at sea, then explore how we can integrate it into your vessels and teams.
+                    </p>
+                    <a href="contact.html?inquiry=demo#contact-form" class="bg-white text-emerald-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                        Request a Live Demo
+                    </a>
+                </div>
+
+                <!-- CTA Image -->
+                <div class="flex justify-center md:justify-end">
+                    <img src="media/fast-boat-plat.png" alt="FAST Platform in action during field deployment" class="rounded-2xl shadow-2xl max-w-md w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo & Mission -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="media/fast-platform-logo2.0.png" alt="FAST Platform" class="h-10 w-auto object-contain rounded-lg">
+                        <span class="font-semibold text-white">FAST Platform</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">
+                        Bringing real, working AI technology to fisheries management for a sustainable future.
+                    </p>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
+                        <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
+                        <li><a href="solutions.html" class="hover:text-cyan-400 transition-colors">Solutions</a></li>
+                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
+                        <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-cyan-500"></i>
+                            <span>info@fastplatform.tech</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (772) 555-0123 (Primary)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (804) 684-9522 (WhatsApp)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-cyan-500"></i>
+                            <span>5521 SE Nassau Terrace, Stuart, Florida 34997, United States</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Legal</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800/50 mt-8 pt-8 text-center text-slate-600 text-sm">
+                <p>&copy; 2025 FASTPLATFORM.TECH All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Ensure hero 'State-of-the-Art' button activates AI Engine tab
+        const stateOfArtCta = document.getElementById('state-of-art-cta');
+        const aiTabButton = document.getElementById('ai-tab');
+        if (stateOfArtCta && aiTabButton) {
+            stateOfArtCta.addEventListener('click', function () {
+                aiTabButton.click();
+            });
+        }
+
+        // Ensure hero 'Data Specs' button activates Data Dashboard tab
+        const dataSpecsCta = document.getElementById('data-specs-cta');
+        const dashboardTabButton = document.getElementById('dashboard-tab');
+        if (dataSpecsCta && dashboardTabButton) {
+            dataSpecsCta.addEventListener('click', function () {
+                dashboardTabButton.click();
+            });
+        }
+    </script>
+</body>
+</html>

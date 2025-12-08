@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# Node / tooling
+node_modules/
+.dist/
+dist/
+build/
+
+# Netlify local data
+.netlify/

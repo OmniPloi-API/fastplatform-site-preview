@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - FAST Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Hero background */
+        .hero-section {
+            background: linear-gradient(180deg, #f5f7fb 0%, #eef5ee 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-soft {
+            background: #8EDCA9;
+            border-bottom: 1px solid #7ac69b;
+        }
+        
+        /* Emerald CTA */
+        .cta-gold {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(29, 185, 84, 0.3);
+        }
+        
+        .cta-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(29, 185, 84, 0.5);
+        }
+        
+        /* Ghost button */
+        .cta-ghost {
+            border: 2px solid #1DB954;
+            color: #1DB954;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-ghost:hover {
+            border-color: #1ed760;
+            color: white;
+            background: #1DB954;
+        }
+        
+        /* Team card */
+        .team-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px);
+            border-color: #1DB954;
+            box-shadow: 0 20px 40px rgba(29, 185, 84, 0.15);
+        }
+        
+        
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #1DB954;
+            border-radius: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 16px);
+            background: linear-gradient(180deg, #1DB954, transparent);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-[#f5f7fb] text-slate-900">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
+        <div class="flex flex-1 items-stretch justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-stretch">
+                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
+            </a>
+            
+            <!-- Menu Links -->
+            <div class="hidden md:flex items-center space-x-8 pr-8">
+                <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
+                <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
+                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
+                <a href="case-studies.html" class="nav-link text-slate-700 hover:text-slate-900">Case Studies</a>
+                <a href="about.html" class="nav-link text-slate-900">About Us</a>
+                <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
+            </div>
+                
+                <!-- CTA Button -->
+                <a href="contact.html#contact-form" class="cta-gold px-6 py-2 rounded-l-full rounded-r-none font-semibold inline-flex items-center justify-center">
+                    Request a Demo
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-slate-900">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-section min-h-[70vh] flex items-center relative pt-20">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
+                        <span class="text-emerald-600">Technology for a Sustainable Future.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600">
+                        We're bringing cutting-edge AI technology from defense applications to solve real-world challenges in fisheries management, ensuring sustainable oceans for future generations.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#team" class="cta-gold px-6 py-3 rounded-md text-sm inline-flex items-center justify-center">
+                            Meet Our Team
+                        </a>
+                        <a href="#story" class="cta-ghost px-6 py-3 rounded-md text-sm inline-flex items-center justify-center">
+                            Our Story
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Image -->
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-2xl">
+                        <img src="media/fast-about-us-hero.jpg" alt="FAST Platform field deployment" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Mission Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+                    Transforming Fisheries Management Through Innovation
+                </h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    At FAST Platform, we believe that the future of sustainable fisheries depends on bringing real, working technology from other industries into the field. Too often, fisheries management relies on outdated methods that can't keep pace with modern challenges.
+                </p>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Our mission is to bridge this gap by deploying proven AI technology, advanced sensing systems, and intuitive data platforms that work where they matter most—in the field, on the water, and in real-time.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe text-2xl text-emerald-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-900">Global Impact</h3>
+                        <p class="text-slate-600">Supporting sustainable fisheries management worldwide</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-2xl text-emerald-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-900">Proven Technology</h3>
+                        <p class="text-slate-600">Defense-grade AI adapted for civilian applications</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-leaf text-2xl text-emerald-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-slate-900">Sustainability Focus</h3>
+                        <p class="text-slate-600">Ensuring healthy oceans for future generations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Founder's Story Section -->
+    <section id="story" class="py-20 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="space-y-6">
+                    <h2 class="text-3xl md:text-4xl font-bold text-emerald-600 uppercase tracking-wide">
+                        The Founder's Story
+                    </h2>
+                    <div class="space-y-4">
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            Dr. Todd Gedamke received a B.A. in Biology from Colgate University in 1990 and an M.S. and PhD from the Virginia Institute of Marine Science in 2002 and 2006 respectively.
+                        </p>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            His research focused on gear efficiency and stock assessment in the commercial scallop fishery of New England, while also developing data-limited assessment models and evaluating the status of the barndoor skate.
+                        </p>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            Todd began working as a stock assessment scientist at NMFS at the Southeast Fisheries Science Center in Miami, FL. In 2010 he was promoted to Branch Chief of Gulf and Caribbean Fisheries and oversaw stock assessments for both regions.
+                        </p>
+                        <p class="text-lg text-slate-500 italic">
+                            He received the 2012 Department of Commerce Bronze Medal Award "For advancing fisheries science in the U.S. Caribbean by pioneering an innovative, cost-effective, and collaborative survey approach."
+                        </p>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="space-y-6 mt-8">
+                        <h3 class="text-xl font-semibold text-slate-900">The Journey</h3>
+                        <div class="space-y-6">
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-lg text-slate-900">1990 - Colgate University</h4>
+                                <p class="text-slate-600">B.A. in Biology</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-lg text-slate-900">2002-2006 - Virginia Institute of Marine Science</h4>
+                                <p class="text-slate-600">M.S. and PhD in Fisheries Science</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-lg text-slate-900">2010 - NOAA Branch Chief</h4>
+                                <p class="text-slate-600">Gulf and Caribbean Fisheries stock assessments</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="font-semibold text-lg text-slate-900">2012 - Commerce Bronze Medal</h4>
+                                <p class="text-slate-600">Award for innovative fisheries survey approach</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image -->
+                <div>
+                    <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-2xl">
+                        <img src="media/Dr.ToddG-belize-teaching-2048x1536" alt="FAST Platform portable deployment" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- The Team Section -->
+    <section id="team" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Our Collaborators</h2>
+                <p class="text-lg text-slate-600">Data Limited Specialists with Global Experience in Small-Scale and Industrial Fisheries</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dr. Todd Gedamke -->
+                <div class="team-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Dr. Todd Gedamke</h3>
+                            <p class="text-emerald-600 text-sm">Founder/Director - MER Consultants</p>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            PhD from Virginia Institute of Marine Science. Former NOAA Branch Chief. 2012 Commerce Bronze Medal recipient for innovative fisheries survey approaches.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Stock Assessment</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Data-Limited Models</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dr. Shyam Madhusudhana -->
+                <div class="team-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Dr. Shyam Madhusudhana</h3>
+                            <p class="text-emerald-600 text-sm">Cornell University</p>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Post-Doc at Center for Conservation Bioacoustics at Cornell Lab of Ornithology. Expert in signal processing and deep/machine learning.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Deep Learning</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Big Data</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dr. Aaron Rice -->
+                <div class="team-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Dr. Aaron Rice, Ph.D</h3>
+                            <p class="text-emerald-600 text-sm">Cornell University</p>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Principal Ecologist at K. Lisa Yang Center for Conservation Bioacoustics. Faculty Fellow at Cornell Atkinson Center for Sustainability.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Conservation Tech</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Bioacoustics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Peter Freeman -->
+                <div class="team-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Peter Freeman</h3>
+                            <p class="text-emerald-600 text-sm">University of Rhode Island</p>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Marine Research Associate. Lead PI on USAID OurFish Our Future – Pacific Wide Fisheries Community Engagement program.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Resource Economics</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Technology Dev</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dr. John Hoenig -->
+                <div class="team-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Dr. John Hoenig</h3>
+                            <p class="text-emerald-600 text-sm">Virginia Institute of Marine Science</p>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Professor Emeritus at College of William and Mary. Expert in fisheries statistics, stock assessment, and survey design.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Statistics</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Survey Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dr. Jeremy Prince -->
+                <div class="team-card rounded-2xl overflow-hidden">
+                    <div class="h-3 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Dr. Jeremy Prince</h3>
+                            <p class="text-emerald-600 text-sm">Murdoch University, Western Australia</p>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            Adjunct Professor. Creator of Barefoot Ecologist Toolbox. Research Director at Biospherics P/L.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Small-Scale Fisheries</span>
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs">Community Engagement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Field Partners Section -->
+    <section class="py-16 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900">Field Partners</h2>
+                <p class="text-slate-600">Working alongside commercial fishers and local experts</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="team-card rounded-xl p-6 text-center">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Miguel "Bebé" Rivera</h3>
+                    <p class="text-emerald-600 text-sm mb-2">Commercial Fisher - Pastillo, Puerto Rico</p>
+                    <p class="text-slate-600 text-xs">Trap & Lobster Fishing, EM Cooperative Project</p>
+                </div>
+                <div class="team-card rounded-xl p-6 text-center">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Alex Soto</h3>
+                    <p class="text-emerald-600 text-sm mb-2">Commercial Fisher - Vieques, Puerto Rico</p>
+                    <p class="text-slate-600 text-xs">Lobster Selectivity EM Cooperative Project</p>
+                </div>
+                <div class="team-card rounded-xl p-6 text-center">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Anthony Crespo</h3>
+                    <p class="text-emerald-600 text-sm mb-2">Port Sampler - Rincon, Puerto Rico</p>
+                    <p class="text-slate-600 text-xs">Smart Sampling Station, Deep-water Snapper</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Company Values Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-slate-900">Our Values</h2>
+                <p class="text-slate-600">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-lightbulb text-2xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900">Innovation</h3>
+                    <p class="text-slate-600 text-sm">Pushing boundaries with proven technology</p>
+                </div>
+                
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-handshake text-2xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900">Integrity</h3>
+                    <p class="text-slate-600 text-sm">Building trust through transparency and accuracy</p>
+                </div>
+                
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-users text-2xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900">Collaboration</h3>
+                    <p class="text-slate-600 text-sm">Working with stakeholders to solve problems</p>
+                </div>
+                
+                <div class="text-center space-y-4">
+                    <div class="w-16 h-16 bg-emerald-100 border border-emerald-300 rounded-2xl flex items-center justify-center mx-auto">
+                        <i class="fas fa-globe-americas text-2xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-900">Sustainability</h3>
+                    <p class="text-slate-600 text-sm">Protecting oceans for future generations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-16 bg-emerald-600">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">
+                Join Our Mission
+            </h2>
+            <p class="text-lg mb-6 text-white opacity-90">
+                Whether you're looking to implement FAST Platform or collaborate with our team
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="contact.html" class="bg-white text-emerald-600 px-6 py-3 rounded-md font-semibold text-sm hover:bg-gray-100 transition-colors">
+                    Request a Demo
+                </a>
+                <a href="contact.html#get-in-touch" class="border-2 border-white text-white px-6 py-3 rounded-md font-semibold text-sm hover:bg-white hover:text-emerald-600 transition-colors">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo & Mission -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="media/fast-platform-logo2.0.png" alt="FAST Platform" class="h-12 w-auto object-contain rounded-lg">
+                    </div>
+                    <p class="text-slate-500 text-sm">
+                        Bringing real, working AI technology to fisheries management for a sustainable future.
+                    </p>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
+                        <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
+                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
+                        <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-cyan-500"></i>
+                            <span>info@fastplatform.tech</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (772) 555-0123 (Primary)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (804) 684-9522 (WhatsApp)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-cyan-500"></i>
+                            <span>5521 SE Nassau Terrace, Stuart, Florida 34997, United States</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Legal</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800/50 mt-8 pt-8 text-center text-slate-600 text-sm">
+                <p>&copy; 2025 FASTPLATFORM.TECH All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

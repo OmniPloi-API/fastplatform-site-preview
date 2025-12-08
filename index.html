@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST Platform - The Future of Fisheries Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Premium dark cinematic background */
+        .hero-section {
+            background: linear-gradient(180deg, #0a0f1a 0%, #101828 50%, #0d1321 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(6, 182, 212, 0.15), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(251, 191, 36, 0.08), transparent);
+            pointer-events: none;
+        }
+        
+        /* Spotify green color scheme with black and white checkers */
+        .cta-gold {
+            background: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(29, 185, 84, 0.3);
+            background: linear-gradient(135deg, #1ed760 0%, #1DB954 100%);
+        }
+        
+        .device-glow {
+            position: relative;
+            filter: drop-shadow(0 0 30px rgba(29, 185, 84, 0.2));
+        }
+        
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000 0%, #191414 50%, #000000 100%);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(29, 185, 84, 0.05) 0%, rgba(30, 215, 96, 0.02) 100%);
+            pointer-events: none;
+        }
+        
+        .scan-effect {
+            /* Green scan line removed per new visual direction */
+            display: none;
+        }
+        
+        /* Black and white checkered pattern */
+        .checkered-pattern {
+            background-image: 
+                repeating-linear-gradient(45deg, #000000 0px, #000000 10px, #ffffff 10px, #ffffff 20px),
+                repeating-linear-gradient(-45deg, #000000 0px, #000000 10px, #ffffff 10px, #ffffff 20px);
+            opacity: 0.1;
+        }
+        
+        .logo-wordmark {
+            letter-spacing: 0.35em;
+        }
+
+        .logo-stripe {
+            height: 4px;
+            width: 80px;
+            background-image: repeating-linear-gradient(
+                135deg,
+                #000000 0px, #000000 8px,
+                #ffffff 8px, #ffffff 16px
+            );
+            border-radius: 9999px;
+        }
+
+        .toc-section {
+            background: #f5f7fb;
+        }
+
+        .toc-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .toc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+        }
+
+        .checkered-divider {
+            height: 6px;
+            width: 100%;
+            background-image: repeating-linear-gradient(
+                90deg,
+                #000000 0px, #000000 12px,
+                #ffffff 12px, #ffffff 24px
+            );
+            border-radius: 9999px;
+        }
+        
+        .hero-gradient {
+            /* Soft cream main background behind hero content */
+            background: #f5f7fb;
+        }
+        
+        .hero-gradient::before {
+            /* No overlay; hero content sits directly on cream background */
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: transparent;
+            pointer-events: none;
+        }
+        
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        .data-panel {
+            background: rgba(10, 15, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(29, 185, 84, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 0;
+        }
+        
+        .data-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.55) 0%,
+                    rgba(0, 0, 0, 0.55) 33.333%,
+                    rgba(255, 255, 255, 0.2) 33.333%,
+                    rgba(255, 255, 255, 0.2) 66.667%,
+                    rgba(0, 0, 0, 0.55) 66.667%,
+                    rgba(0, 0, 0, 0.55) 100%
+                ),
+                linear-gradient(180deg,
+                    rgba(0, 0, 0, 0.55) 0%,
+                    rgba(0, 0, 0, 0.55) 33.333%,
+                    rgba(255, 255, 255, 0.2) 33.333%,
+                    rgba(255, 255, 255, 0.2) 66.667%,
+                    rgba(0, 0, 0, 0.55) 66.667%,
+                    rgba(0, 0, 0, 0.55) 100%
+                );
+            /* 3 columns by 3 rows of large squares (9 total) */
+            opacity: 0.18;
+            pointer-events: none;
+            border-radius: inherit;
+            z-index: 0;
+        }
+
+        .data-panel > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .impact-section {
+            /* Dark steel metrics band with diagonal stripes */
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0) 45%),
+                repeating-linear-gradient(
+                    -45deg,
+                    #111111 0px,
+                    #111111 18px,
+                    #2b3138 18px,
+                    #2b3138 36px
+                );
+        }
+        
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: none;
+            opacity: 0;
+        }
+        
+        .founder-section {
+            /* Founder card on brand green band */
+            background: #8EDCA9;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
+        }
+        
+        .hero-gradient {
+            background: #f5f7fb;
+        }
+        
+        .metric-highlight {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1DB954;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-soft {
+            /* Use hero background green for navbar */
+            background: #8EDCA9;
+            border-bottom: 1px solid #7ac69b;
+        }
+        
+        @keyframes pulse-cyan {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+            50% { box-shadow: 0 0 0 8px rgba(6, 182, 212, 0); }
+        }
+        
+        .pulse-dot {
+            animation: pulse-cyan 2s infinite;
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Video background container */
+        .video-container {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 15, 26, 0.3) 0%, rgba(10, 15, 26, 0.1) 100%);
+            pointer-events: none;
+        }
+        
+        /* Metric icons */
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 8px;
+            color: #06b6d4;
+        }
+    </style>
+ </head>
+ <body class="bg-[#f5f7fb] text-white">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
+        <div class="flex flex-1 items-stretch justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-stretch">
+                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
+            </a>
+            
+            <!-- Menu Links -->
+            <div class="hidden md:flex items-center space-x-8 pr-8">
+                <a href="index.html" class="nav-link text-slate-900">Home</a>
+                <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
+                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
+                <a href="case-studies.html" class="nav-link text-slate-700 hover:text-slate-900">Case Studies</a>
+                <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
+                <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
+            </div>
+                
+                <!-- CTA Button -->
+                <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-white font-semibold inline-flex items-center justify-center">
+                    Request a Demo
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center relative pt-20">
+        <div class="container mx-auto px-6 py-16">
+            <!-- Logo centered above content -->
+            <div class="flex flex-col items-center mb-12">
+                <p class="text-xs md:text-sm text-slate-500 uppercase tracking-[0.35em] mb-3">Welcome to</p>
+                <img src="media/FAST PLATFORM TECH (500 x 275 px).png" alt="FAST Platform" class="w-full max-w-2xl">
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Text Content -->
+                <div class="space-y-6">
+                    <!-- Title -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight logo-wordmark text-slate-900">
+                        <span>THE FUTURE OF</span><br>
+                        <span>FISHERIES DATA</span>
+                    </h1>
+
+                    <!-- Subtitle with checkered underline -->
+                    <div class="mt-6">
+                        <p class="text-sm md:text-base text-slate-500 uppercase tracking-[0.25em] font-medium">
+                            Captured in Seconds
+                        </p>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div>
+                        <a href="contact.html" class="cta-gold px-6 py-3 rounded-md text-sm inline-flex items-center justify-center">
+                            Request Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Video with Data Overlay -->
+                <div class="relative">
+                    <!-- Main Device Visual with Glow -->
+                    <div class="device-glow relative">
+                        <div class="video-container rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl">
+                            <video id="heroVideo" autoplay muted loop playsinline class="w-full aspect-video object-cover">
+                                <source src="media/hero-video.mp4?v=2" type="video/mp4">
+                                <!-- Fallback to image -->
+                                <img src="media/fish-market.jpg" alt="FAST Platform in action" class="w-full">
+                            </video>
+                            <div class="video-overlay"></div>
+                            <!-- Animated scan line -->
+                            <div class="scan-effect"></div>
+                        </div>
+                    </div>
+
+                    <!-- Species ID Data Panel - Top Right -->
+                    <div class="absolute top-4 right-4 data-panel rounded-xl p-4 min-w-[200px]">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <i class="fas fa-bolt text-green-400 text-sm"></i>
+                            </div>
+                            <div>
+                                <div class="text-[0.65rem] text-slate-400 uppercase tracking-wider">Species ID:</div>
+                                <div id="speciesName" class="text-base font-bold text-green-400">DETECTING...</div>
+                            </div>
+                        </div>
+                        <div class="border-t border-green-400/60 pt-3">
+                            <div class="text-[0.65rem] text-slate-400 uppercase tracking-wider mb-1">Processing Time:</div>
+                            <div class="flex items-baseline gap-1 justify-end text-right">
+                                <span id="weightValue" class="text-3xl font-bold text-white">--.--</span>
+                                <span class="text-lg text-slate-400">SEC</span>
+                                <i id="weightIcon" class="fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents / Quick Navigation -->
+    <section class="toc-section py-16">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-10">
+                <p class="text-sm font-semibold tracking-[0.3em] text-slate-500 uppercase">Explore FAST PLATFORM.TECH</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Dive in Below</h2>
+                <div class="mt-4 flex justify-center">
+                    <div class="checkered-divider max-w-md"></div>
+                </div>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                <a href="platform.html" class="toc-card block text-left">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">The Platform</h3>
+                    <p class="text-xs text-slate-500 mb-3">See how FAST measures, identifies, and uploads catch in seconds.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-emerald-600">View capabilities <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+                </a>
+                <a href="solutions.html" class="toc-card block text-left">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Use Cases</h3>
+                    <p class="text-xs text-slate-500 mb-3">From small-scale fleets to national programs, explore deployments.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-emerald-600">Explore solutions <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+                </a>
+                <a href="case-studies.html" class="toc-card block text-left">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Case Studies</h3>
+                    <p class="text-xs text-slate-500 mb-3">Real-world results from pilots and production fisheries.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-emerald-600">Read stories <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+                </a>
+                <a href="about.html" class="toc-card block text-left">
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">About FAST</h3>
+                    <p class="text-xs text-slate-500 mb-3">Meet the team and science behind the platform.</p>
+                    <span class="inline-flex items-center text-xs font-semibold text-emerald-600">Meet the team <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Field Deployment: Honiara, Solomon Islands -->
+    <section class="py-16 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <p class="text-xs font-semibold tracking-[0.28em] text-slate-500 uppercase">Field Deployment</p>
+                </div>
+                <div class="flex flex-col lg:flex-row items-start gap-10">
+                    <div class="lg:w-1/2 order-1">
+                        <div class="rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl mx-auto relative" style="width:320px; height:500px;">
+                            <video id="honiaraVideo" playsinline class="w-full h-full object-cover">
+                                <source src="media/Solomon Island Demo Honiara Sept 2023 short for SEFSC.mp4?v=2" type="video/mp4">
+                            </video>
+                            <button id="honiaraOverlay" type="button" class="absolute inset-0 bg-slate-900/60 hover:bg-slate-900/70 transition-colors flex flex-col justify-between items-center text-white p-4 text-center">
+                                <div class="text-[10px] uppercase tracking-[0.28em] text-emerald-300">Field Demo · Honiara Market</div>
+                                <div class="flex-1 flex items-center justify-center">
+                                    <div class="text-center space-y-2">
+                                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 shadow-lg mb-1">
+                                            <i class="fas fa-play text-white ml-1"></i>
+                                        </div>
+                                        <p class="text-sm font-semibold">Tap or click to play the 2–3 seconds per fish demo</p>
+                                        <p class="text-[11px] text-emerald-100">Plays with sound · Make sure your device volume is up</p>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 space-y-4 order-2 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center">
+                            <span class="block">Honiara Market</span>
+                            <span class="block my-3 checkered-divider mx-auto" style="width:60px; height:4px;"></span>
+                        </h2>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            Demo at the Solomon Islands National University and deployed in Honiara markets. FAST automates weight and length capture in seconds, even in busy, real-world conditions.
+                        </p>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li class="flex items-center gap-2 justify-center"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> 2–3 seconds per fish with automated weight + length</li>
+                            <li class="flex items-center gap-2 justify-center"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Minimal training required; video-only workflow for speed</li>
+                            <li class="flex items-center gap-2 justify-center"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Data integrity and auditability for science and compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Impact Metrics Section - Matching Reference -->
+    <section class="impact-section py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- Left - Headlines -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                        <span class="text-white">FROM 4 PEOPLE TO 1</span><br>
+                        <span class="text-white">FROM 5 SECONDS TO 2</span>
+                    </h2>
+                </div>
+                
+                <!-- Right - Metric Icons -->
+                <div class="lg:w-1/2 flex items-center justify-center gap-8">
+                    <!-- People metric -->
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-1 text-slate-500">
+                            <i class="fas fa-chevron-left text-xs"></i>
+                            <i class="fas fa-user text-2xl"></i>
+                            <i class="fas fa-user text-2xl"></i>
+                            <i class="fas fa-user text-2xl"></i>
+                            <i class="fas fa-user text-2xl"></i>
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </div>
+                        <i class="fas fa-arrow-right text-cyan-400"></i>
+                        <div class="text-cyan-400">
+                            <i class="fas fa-user text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Time metric -->
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-2 text-slate-500">
+                            <span class="text-2xl font-bold">5</span>
+                            <span class="text-lg font-bold">SECONDS</span>
+                            <i class="fas fa-clock text-xl"></i>
+                        </div>
+                        <div class="flex items-center gap-2 text-cyan-400">
+                            <span class="text-2xl font-bold">2</span>
+                            <i class="fas fa-arrow-right"></i>
+                            <span class="text-2xl font-bold">3</span>
+                            <i class="fas fa-clock text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Founder's Credibility Section - Matching Reference -->
+    <section class="py-16 bg-slate-950">
+        <div class="container mx-auto px-6">
+            <div class="founder-section rounded-2xl p-8 md:p-12">
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <!-- Left - Founder Image -->
+                    <div class="relative">
+                        <div class="aspect-square max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-slate-700/50">
+                            <img src="media/fast-bottom-left.jpg" alt="FAST Platform deployment" class="w-full h-full object-cover object-left">
+                        </div>
+                    </div>
+                    
+                    <!-- Right - Content -->
+                    <div class="space-y-6 text-center">
+                        <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-slate-900">
+                            Built by Biologists for the Field
+                        </h2>
+                        <blockquote class="text-lg md:text-xl text-slate-800 leading-relaxed">
+                            "We don't just collect data;<br>
+                            we use it to tell the ocean's story."
+                        </blockquote>
+                        <p class="text-slate-800 text-sm leading-relaxed max-w-xl mx-auto">
+                            Dr. Todd Gedamke received his PhD from the Virginia Institute of Marine Science. His research focused on stock assessment and data-limited models. After serving as Branch Chief at NOAA's Southeast Fisheries Science Center, he founded MER Consultants to bring cutting-edge AI technology to fisheries management.
+                        </p>
+                        <div class="pt-2 flex justify-center">
+                            <a href="about.html#story" class="cta-gold px-6 py-3 rounded-md text-sm inline-flex items-center justify-center uppercase tracking-wider">
+                                Meet Our Founder
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-square max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-slate-700/50">
+                            <img src="media/fast-bottom-hero.png" alt="FAST Platform in the field" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Logo & Mission -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <img src="media/fast-platform-logo2.0.png" alt="FAST Platform" class="h-10 w-auto object-contain rounded-lg">
+                        <span class="font-semibold text-white">FAST Platform</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">
+                        Bringing real, working AI technology to fisheries management for a sustainable future.
+                    </p>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Navigation</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
+                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
+                        <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-envelope text-cyan-500"></i>
+                            <span>info@fastplatform.tech</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (772) 555-0123 (Primary)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-phone text-cyan-500"></i>
+                            <span>+1 (804) 684-9522 (WhatsApp)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fas fa-map-marker-alt text-cyan-500"></i>
+                            <span>5521 SE Nassau Terrace, Stuart, Florida 34997, United States</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Legal Links -->
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Legal</h4>
+                    <ul class="space-y-2 text-slate-500 text-sm">
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800/50 mt-8 pt-8 text-center text-slate-600 text-sm">
+                <p>&copy; 2025 FASTPLATFORM.TECH All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // Mobile menu implementation would go here
+                console.log('Mobile menu clicked');
+            });
+        }
+        
+        // Video-synced weight and species detection
+        (function() {
+            const video = document.getElementById('heroVideo');
+            const speciesEl = document.getElementById('speciesName');
+            const weightEl = document.getElementById('weightValue');
+            const weightIcon = document.getElementById('weightIcon');
+            
+            if (!video || !speciesEl || !weightEl) return;
+            
+            // Configuration - species detection and processing time simulation
+            const SPECIES_NAME = "RED SNAPPER";
+            const TIME_MIN_SECONDS = 2.0;  // Minimum processing time
+            const TIME_MAX_SECONDS = 3.38; // Maximum processing time
+            const SPECIES_DETECT_TIME = 0.8; // Seconds into video when species is detected
+            const CYCLE_START_TIME = 1.2; // Seconds when first timing cycle starts
+            const CYCLE_DURATION = 2000; // Each timing cycle lasts 2 seconds
+            
+            let lastTime = -1;
+            let animationFrame = null;
+            let currentCycleIndex = -1;
+            let currentTargetTime = TIME_MIN_SECONDS;
+            
+            function resetDisplay() {
+                speciesEl.textContent = "DETECTING...";
+                speciesEl.classList.remove('text-green-400');
+                speciesEl.classList.add('text-slate-400');
+                weightEl.textContent = "--.--";
+                weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
+                currentCycleIndex = -1;
+            }
+            
+            function updateDisplay(currentTime) {
+                // Species detection
+                if (currentTime >= SPECIES_DETECT_TIME) {
+                    if (speciesEl.textContent !== SPECIES_NAME) {
+                        speciesEl.textContent = SPECIES_NAME;
+                        speciesEl.classList.remove('text-slate-400');
+                        speciesEl.classList.add('text-green-400');
+                    }
+                } else {
+                    if (speciesEl.textContent !== "DETECTING...") {
+                        speciesEl.textContent = "DETECTING...";
+                        speciesEl.classList.remove('text-green-400');
+                        speciesEl.classList.add('text-slate-400');
+                    }
+                }
+                
+                // Processing time calculation - how long FAST takes to analyze
+                if (currentTime < CYCLE_START_TIME) {
+                    // Before first timing cycle
+                    weightEl.textContent = "--.--";
+                    weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
+                } else {
+                    // Calculate cycle progress
+                    const elapsedTime = (currentTime - CYCLE_START_TIME) * 1000; // Convert to milliseconds
+                    const cycleNumber = Math.floor(elapsedTime / CYCLE_DURATION);
+                    const cycleProgress = (elapsedTime % CYCLE_DURATION) / CYCLE_DURATION;
+                    
+                    // Get target processing time for this cycle
+                    if (cycleNumber !== currentCycleIndex) {
+                        currentCycleIndex = cycleNumber;
+                        currentTargetTime = TIME_MIN_SECONDS + Math.random() * (TIME_MAX_SECONDS - TIME_MIN_SECONDS);
+                    }
+                    const targetTime = currentTargetTime;
+                    
+                    if (cycleProgress < 0.75) {
+                        // First 75% of cycle: show dashes (fish being moved/positioned)
+                        weightEl.textContent = "--.--";
+                        weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
+                    } else if (cycleProgress < 0.875) {
+                        // Next 12.5%: animate time calculation
+                        const animProgress = (cycleProgress - 0.75) / 0.125;
+                        const displayTime = targetTime * animProgress;
+                        
+                        // Add some "noise" to simulate real-time calculation
+                        const noise = (Math.random() - 0.5) * 0.05 * (1 - animProgress);
+                        const finalTime = Math.max(0, displayTime + noise);
+                        
+                        weightEl.textContent = finalTime.toFixed(2);
+                        weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
+                    } else {
+                        // Final 12.5%: show stable processing time
+                        weightEl.textContent = targetTime.toFixed(2);
+                        weightIcon.className = "fas fa-check-circle text-emerald-400 text-xs ml-2";
+                    }
+                }
+            }
+            
+            function onVideoTimeUpdate() {
+                const currentTime = video.currentTime;
+                
+                // Reset when video loops back to beginning
+                if (currentTime < lastTime - 1) {
+                    resetDisplay();
+                }
+                lastTime = currentTime;
+                
+                updateDisplay(currentTime);
+            }
+            
+            // Listen for video time updates
+            video.addEventListener('timeupdate', onVideoTimeUpdate);
+            
+            // Also use requestAnimationFrame for smoother weight animation
+            function smoothUpdate() {
+                if (video && !video.paused) {
+                    updateDisplay(video.currentTime);
+                }
+                animationFrame = requestAnimationFrame(smoothUpdate);
+            }
+            
+            video.addEventListener('play', () => {
+                if (!animationFrame) {
+                    smoothUpdate();
+                }
+            });
+            
+            video.addEventListener('pause', () => {
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                    animationFrame = null;
+                }
+            });
+            
+            // Initialize
+            resetDisplay();
+            if (!video.paused) {
+                smoothUpdate();
+            }
+        })();
+
+        // Honiara field deployment: click-to-play with sound
+        (function() {
+            const honiaraVideo = document.getElementById('honiaraVideo');
+            const honiaraOverlay = document.getElementById('honiaraOverlay');
+
+            if (!honiaraVideo || !honiaraOverlay) return;
+
+            // Ensure initial state
+            honiaraVideo.pause();
+            honiaraVideo.currentTime = 0;
+            honiaraVideo.muted = false; // we want sound once user clicks
+
+            // On click/tap, start playback with sound and show controls
+            honiaraOverlay.addEventListener('click', function () {
+                // Show native controls once playing
+                honiaraVideo.setAttribute('controls', 'controls');
+
+                // Some browsers require explicit user-gesture volume/unmute
+                honiaraVideo.muted = false;
+                try {
+                    honiaraVideo.volume = 1.0;
+                } catch (e) {
+                    // Ignore if volume cannot be set
+                }
+
+                const playPromise = honiaraVideo.play();
+                if (playPromise && typeof playPromise.then === 'function') {
+                    playPromise.then(() => {
+                        honiaraOverlay.classList.add('hidden');
+                    }).catch(() => {
+                        // If playback fails (e.g., browser restriction), keep overlay visible
+                    });
+                } else {
+                    honiaraOverlay.classList.add('hidden');
+                }
+            });
+
+            // Optionally re-show overlay when video ends
+            honiaraVideo.addEventListener('ended', function () {
+                honiaraOverlay.classList.remove('hidden');
+                honiaraVideo.currentTime = 0;
+                honiaraVideo.removeAttribute('controls');
+            });
+        })();
+    </script>
+</body>
+</html>
