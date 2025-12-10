@@ -13,8 +13,42 @@
             font-family: 'Inter', sans-serif;
         }
         
-        .hero-gradient {
-            background: linear-gradient(180deg, #f5f7fb 0%, #eef5ee 100%);
+        .impact-section {
+            /* Black & white checkerboard metrics band */
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            background-image:
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000),
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000);
+            background-size: 40px 40px; /* square tiles */
+            background-position: 0 0, 20px 20px;
+        }
+        .impact-content {
+            position: relative;
+            margin-top: -4rem;
+        }
+        @media (min-width: 1024px) {
+            .impact-content {
+                margin-top: -5rem;
+            }
+        }
+        
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: none;
+            opacity: 0;
+        }
+        
+        .founder-section {
+            /* Founder card on brand green band */
+            background: #8EDCA9;
         }
         
         .tab-content {
@@ -114,74 +148,39 @@
 </head>
 <body class="bg-[#f5f7fb] text-slate-900">
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
-        <div class="flex flex-1 items-stretch justify-between">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-stretch">
-                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
-            </a>
-            
-            <!-- Menu Links -->
-            <div class="hidden md:flex items-center space-x-8 pr-8">
-                <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
-                <a href="platform.html" class="nav-link text-slate-900">The Platform</a>
-                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
-                <a href="case-studies.html" class="nav-link text-slate-700 hover:text-slate-900">Case Studies</a>
-                <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
-                <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
-            </div>
-                
-                <!-- CTA Button -->
-                <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-white font-semibold inline-flex items-center justify-center">
-                    Request a Demo
-                </a>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-slate-900">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+    <nav class="fixed top-0 w-full nav-soft z-50">
+        <div class="w-full pr-6 pl-3">
+            <div class="flex items-center justify-between py-1 relative">
+                <!-- Menu Links - Absolutely centered on page -->
+                <div class="hidden md:flex items-center justify-center space-x-8 absolute inset-x-0 left-1/2 -translate-x-1/2">
+                    <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
+                    <a href="platform.html" class="nav-link text-slate-900">The Platform</a>
+                    <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
+                    <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
+                </div>
+
+                <!-- CTA Button + Mobile Menu -->
+                <div class="flex items-center gap-4 ml-auto">
+                    <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-black font-semibold inline-flex items-center justify-center">
+                        Request a Demo
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
     
-    <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div class="space-y-6">
-                    <h1 class="text-5xl md:text-6xl font-bold leading-tight text-slate-900">
-                        AI-Powered<br>
-                        <span class="text-emerald-600">Precision and Speed.</span>
-                    </h1>
-                    <p class="text-xl text-slate-600">
-                        Experience the cutting-edge technology that's revolutionizing fisheries data collection with unprecedented accuracy and efficiency.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#core-components" id="state-of-art-cta" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg shadow-emerald-500/30 transition-transform transform hover:-translate-y-0.5 inline-flex items-center justify-center">
-                            State-of-the-Art
-                        </a>
-                        <a href="#core-components" id="data-specs-cta" class="border-2 border-emerald-500 px-8 py-4 rounded-full text-emerald-600 font-semibold text-lg hover:bg-emerald-500 hover:text-white transition-colors inline-flex items-center justify-center">
-                            Data Specs
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Right Content - Video -->
-                <div>
-                    <video class="w-full rounded-2xl shadow-2xl" autoplay muted loop playsinline>
-                        <source src="media/object-detection-raw.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <!-- Core Components Tabs -->
-    <section id="core-components" class="py-20 bg-white">
+    <section id="core-components" class="pt-40 pb-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Core Components</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+                    Meet <span class="text-emerald-600">FAST Platform</span>
+                </h2>
                 <p class="text-xl text-slate-600">Explore the technology behind the revolution</p>
             </div>
             
@@ -201,8 +200,9 @@
             <!-- Tab Content -->
             <!-- Hardware Tab -->
             <div id="hardware" class="tab-content active">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-3 items-center">
+                    <!-- Left Copy -->
+                    <div class="space-y-6 text-left">
                         <h3 class="text-3xl font-bold text-emerald-600">Rugged Hardware for Field Use</h3>
                         <div class="space-y-4">
                             <div class="flex items-start space-x-4">
@@ -243,12 +243,17 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <img src="media/fastplat-white-bg.png" alt="FAST Platform hardware for field use" class="rounded-2xl shadow-2xl">
+
+                    <!-- Right Image: Portable field portrait -->
+                    <div class="flex flex-col items-center justify-center">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image34.jpeg" alt="Portable FAST Platform in field use" class="rounded-2xl shadow-2xl max-w-md w-full object-cover">
+                        <p class="mt-4 text-xs font-semibold text-emerald-600 text-center">
+                            Weighs less than 10 lbs and can fit inside a Pelican case
+                        </p>
                     </div>
                 </div>
             </div>
-            
+
             <!-- AI Engine Tab -->
             <div id="ai" class="tab-content">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -351,11 +356,61 @@
         </div>
     </section>
     
+    <!-- Portability & Adaptability Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 lg:w-3/4 lg:ml-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-emerald-600">Portable and Adaptable</h2>
+                <p class="text-xl text-slate-600">Designed for flexibility in any field environment</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- Floating Transparent Product Image (no card) -->
+                <div class="flex items-center justify-center">
+                    <img src="media/fast-product shot.png" alt="FAST Platform portable hardware" class="w-full max-w-sm object-contain">
+                </div>
+                
+                <!-- On Bucket -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-slate-200 hover:shadow-2xl transition-shadow">
+                    <div class="aspect-[3/4] relative">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image35.jpeg" alt="FAST Platform on bucket" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-emerald-600 text-white text-center">
+                        <h3 class="text-lg font-bold">On Bucket</h3>
+                    </div>
+                </div>
+                
+                <!-- On Boat Rail -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-slate-200 hover:shadow-2xl transition-shadow">
+                    <div class="aspect-[3/4] relative">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image36.png" alt="FAST Platform on boat rail" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-emerald-600 text-white text-center">
+                        <h3 class="text-lg font-bold">On Boat Rail</h3>
+                    </div>
+                </div>
+                
+                <!-- On Boat Bench -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-xl border border-slate-200 hover:shadow-2xl transition-shadow">
+                    <div class="aspect-[3/4] relative">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image37.png" alt="FAST Platform on boat bench" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4 bg-emerald-600 text-white text-center">
+                        <h3 class="text-lg font-bold">On Boat Bench</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+            </div>
+        </div>
+    </section>
+    
     <!-- Features & Benefits Grid -->
     <section class="py-20 bg-[#f5f7fb]">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Features & Benefits</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-slate-900">Features <span class="text-emerald-600">&amp;</span> Benefits</h2>
                 <p class="text-xl text-slate-600">See how our features translate to real-world advantages</p>
             </div>
             
@@ -441,33 +496,89 @@
         </div>
     </section>
     
+    <!-- Founder's Credibility Section - Matching Reference -->
+    <section class="py-16 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="founder-section rounded-2xl p-8 md:p-12">
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <!-- Left - Founder Image -->
+                    <div class="relative">
+                        <div class="aspect-square max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-slate-700/50">
+                            <img src="media/fast-bottom-left.jpg" alt="FAST Platform deployment" class="w-full h-full object-cover object-left">
+                        </div>
+                    </div>
+                    
+                    <!-- Right - Content -->
+                    <div class="space-y-6 text-center">
+                        <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-slate-900">
+                            Built by Biologists for the Field
+                        </h2>
+                        <blockquote class="text-lg md:text-xl text-slate-800 leading-relaxed">
+                            "We don't just collect data;<br>
+                            we use it to tell the ocean's story."
+                        </blockquote>
+                        <p class="text-slate-800 text-sm leading-relaxed max-w-xl mx-auto">
+                            Dr. Todd Gedamke received his PhD from the Virginia Institute of Marine Science. His research focused on stock assessment and data-limited models. After serving as Branch Chief at NOAA's Southeast Fisheries Science Center, he founded MER Consultants to bring cutting-edge AI technology to fisheries management.
+                        </p>
+                        <div class="pt-2 flex justify-center">
+                            <a href="about.html#story" class="cta-gold px-6 py-3 rounded-md text-sm inline-flex items-center justify-center uppercase tracking-wider">
+                                Meet Our Founder
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-square max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-slate-700/50">
+                            <img src="media/fast-bottom-hero.png" alt="FAST Platform in the field" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- CTA Section -->
     <section class="py-20 bg-emerald-600">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- CTA Copy -->
-                <div class="text-center md:text-left">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        From the Field to Your Dash in an Instant.
+            <div class="grid md:grid-cols-3 gap-12 items-center">
+                <!-- Left Image -->
+                <div class="flex justify-center md:justify-start order-2 md:order-1">
+                    <div class="rounded-2xl shadow-2xl overflow-hidden max-w-md w-full h-80 md:h-[28rem]">
+                        <img src="media/fast-field-boat.png" alt="FAST Platform field deployment on boat" class="w-full h-full object-cover object-center">
+                    </div>
+                </div>
+
+                <!-- CTA Copy (center) -->
+                <div class="text-center order-1 md:order-2">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+                        From the Field to Your Dash FAST
                     </h2>
                     <p class="text-xl mb-8 opacity-90">
-                        See how FAST fits into real fishing workflows at sea, then explore how we can integrate it into your vessels and teams.
+                        Learn how FAST fits into real fishing workflows at sea &amp; integrate it into your vessels, markets, labs &amp;/or teams
                     </p>
                     <a href="contact.html?inquiry=demo#contact-form" class="bg-white text-emerald-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
                         Request a Live Demo
                     </a>
                 </div>
 
-                <!-- CTA Image -->
-                <div class="flex justify-center md:justify-end">
-                    <img src="media/fast-boat-plat.png" alt="FAST Platform in action during field deployment" class="rounded-2xl shadow-2xl max-w-md w-full">
+                <!-- Right Image -->
+                <div class="flex justify-center md:justify-end order-3">
+                    <div class="rounded-2xl shadow-2xl overflow-hidden max-w-md w-full h-80 md:h-[28rem]">
+                        <img src="media/data-integrity.png" alt="FAST Platform data integrity dashboard" class="w-full h-full object-cover object-top">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
     
+    <!-- Impact Metrics Section - Checkerboard Band Only -->
+    <section class="impact-section py-20 relative">
+        <div class="container mx-auto px-6 impact-content">
+            <!-- Intentionally left without text/icons for now; checkerboard band acts as a visual separator -->
+        </div>
+    </section>
+    
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+    <footer class="bg-black border-t border-black/70 py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- Logo & Mission -->
@@ -487,8 +598,6 @@
                     <ul class="space-y-2 text-slate-500 text-sm">
                         <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
                         <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
-                        <li><a href="solutions.html" class="hover:text-cyan-400 transition-colors">Solutions</a></li>
-                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
                         <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
                         <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
                     </ul>

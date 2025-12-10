@@ -196,20 +196,155 @@
         }
         
         .impact-section {
-            /* Dark steel metrics band with diagonal stripes */
+            /* Black & white checkerboard metrics band */
             position: relative;
             overflow: hidden;
-            background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0) 45%),
-                repeating-linear-gradient(
-                    -45deg,
-                    #111111 0px,
-                    #111111 18px,
-                    #2b3138 18px,
-                    #2b3138 36px
-                );
+            background-color: #ffffff;
+            background-image:
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000),
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000);
+            background-size: 40px 40px; /* square tiles */
+            background-position: 0 0, 20px 20px;
+        }
+        .impact-content {
+            position: relative;
+            margin-top: -4rem;
+        }
+        @media (min-width: 1024px) {
+            .impact-content {
+                margin-top: -5rem;
+            }
         }
         
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: none;
+            opacity: 0;
+        }
+        
+        .founder-section {
+            /* Founder card on brand green band */
+            background: #8EDCA9;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
+        }
+        
+        .hero-gradient {
+            background: #f5f7fb;
+        }
+        
+        .metric-highlight {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1DB954;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-soft {
+            /* Use hero background green for navbar */
+            background: #8EDCA9;
+            border-bottom: 1px solid #7ac69b;
+        }
+        
+        @keyframes pulse-cyan {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+            50% { box-shadow: 0 0 0 8px rgba(6, 182, 212, 0); }
+        }
+        
+        .pulse-dot {
+            animation: pulse-cyan 2s infinite;
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Video background container */
+        .video-container {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .visualizer-side-mask-left,
+        .visualizer-side-mask-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 7%;
+            background: rgba(29, 185, 84, 0.95);
+            pointer-events: none;
+        }
+
+        .visualizer-side-mask-left {
+            left: 0;
+        }
+
+        .visualizer-side-mask-right {
+            right: 0;
+        }
+        
+        /* Metric icons */
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 8px;
+            color: #06b6d4;
+        }
+
+        /* Partner photo carousel */
+        .partner-photo-strip {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-photo-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .partner-photo-slide.is-active {
+            position: relative;
+            opacity: 1;
+        }
+
         .impact-section::before {
             content: '';
             position: absolute;
@@ -294,61 +429,51 @@
         .video-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(10, 15, 26, 0.3) 0%, rgba(10, 15, 26, 0.1) 100%);
+            background: linear-gradient(to right,
+                rgba(29, 185, 84, 0.95) 0%,
+                rgba(29, 185, 84, 0.95) 12%,
+                rgba(29, 185, 84, 0.0) 35%,
+                rgba(29, 185, 84, 0.0) 65%,
+                rgba(29, 185, 84, 0.95) 88%,
+                rgba(29, 185, 84, 0.95) 100%);
             pointer-events: none;
-        }
-        
-        /* Metric icons */
-        .metric-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            border-radius: 8px;
-            color: #06b6d4;
         }
     </style>
  </head>
  <body class="bg-[#f5f7fb] text-white">
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
-        <div class="flex flex-1 items-stretch justify-between">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-stretch">
-                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
-            </a>
-            
-            <!-- Menu Links -->
-            <div class="hidden md:flex items-center space-x-8 pr-8">
-                <a href="index.html" class="nav-link text-slate-900">Home</a>
-                <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
-                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
-                <a href="case-studies.html" class="nav-link text-slate-700 hover:text-slate-900">Case Studies</a>
-                <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
-                <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
-            </div>
-                
-                <!-- CTA Button -->
-                <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-white font-semibold inline-flex items-center justify-center">
-                    Request a Demo
-                </a>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+    <nav class="fixed top-0 w-full nav-soft z-50">
+        <div class="w-full pr-6 pl-3">
+            <div class="flex items-center justify-between py-1 relative">
+                <!-- Menu Links - Absolutely centered on page -->
+                <div class="hidden md:flex items-center justify-center space-x-8 absolute inset-x-0 left-1/2 -translate-x-1/2">
+                    <a href="index.html" class="nav-link text-slate-900">Home</a>
+                    <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
+                    <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
+                    <a href="contact.html" class="nav-link text-slate-700 hover:text-slate-900">Contact</a>
+                </div>
+
+                <!-- CTA Button + Mobile Menu -->
+                <div class="flex items-center gap-4 ml-auto">
+                    <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-black font-semibold inline-flex items-center justify-center">
+                        Request a Demo
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section class="hero-gradient min-h-screen flex items-center relative pt-20">
         <div class="container mx-auto px-6 py-16">
             <!-- Logo centered above content -->
             <div class="flex flex-col items-center mb-12">
-                <p class="text-xs md:text-sm text-slate-500 uppercase tracking-[0.35em] mb-3">Welcome to</p>
+                <p class="text-xs md:text-sm text-emerald-600 uppercase tracking-[0.35em] mb-3">Welcome to</p>
                 <img src="media/FAST PLATFORM TECH (500 x 275 px).png" alt="FAST Platform" class="w-full max-w-2xl">
             </div>
 
@@ -356,61 +481,745 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Left Column - Text Content -->
                 <div class="space-y-6">
+                    <!-- Subtitle above title -->
+                    <div>
+                        <p class="text-sm md:text-base text-emerald-600 uppercase tracking-[0.25em] font-medium">
+                            Accurate Fishery Data in Seconds
+                        </p>
+                    </div>
+
                     <!-- Title -->
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight logo-wordmark text-slate-900">
-                        <span>THE FUTURE OF</span><br>
-                        <span>FISHERIES DATA</span>
+                        <span>Automated Sampling Technology for Fisheries</span>
                     </h1>
 
-                    <!-- Subtitle with checkered underline -->
-                    <div class="mt-6">
-                        <p class="text-sm md:text-base text-slate-500 uppercase tracking-[0.25em] font-medium">
-                            Captured in Seconds
+                    <!-- Tagline under title -->
+                    <div>
+                        <p class="text-sm md:text-base text-emerald-600 uppercase tracking-[0.25em] font-medium">
+                            Big data for any size fishery
                         </p>
                     </div>
                     
                     <!-- CTA Button -->
                     <div>
                         <a href="contact.html" class="cta-gold px-6 py-3 rounded-md text-sm inline-flex items-center justify-center">
-                            Request Live Demo
+                            Get FAST Now
                         </a>
                     </div>
                 </div>
 
                 <!-- Right Column - Video with Data Overlay -->
-                <div class="relative">
+                <div class="relative flex flex-col items-center">
                     <!-- Main Device Visual with Glow -->
-                    <div class="device-glow relative">
-                        <div class="video-container rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl">
+                    <div class="device-glow relative w-full max-w-xl">
+                        <div class="video-container rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl bg-white">
                             <video id="heroVideo" autoplay muted loop playsinline class="w-full aspect-video object-cover">
                                 <source src="media/hero-video.mp4?v=2" type="video/mp4">
                                 <!-- Fallback to image -->
                                 <img src="media/fish-market.jpg" alt="FAST Platform in action" class="w-full">
                             </video>
-                            <div class="video-overlay"></div>
                             <!-- Animated scan line -->
                             <div class="scan-effect"></div>
                         </div>
                     </div>
 
-                    <!-- Species ID Data Panel - Top Right -->
+                    <!-- Caption under hero video -->
+                    <div class="mt-4 w-full max-w-xl text-center">
+                        <p class="text-[10px] md:text-[11px] font-semibold tracking-[0.22em] text-emerald-600 uppercase">
+                            Custom and cost-effective automated fisheries data collection
+                        </p>
+                    </div>
+
+                    <!-- Weight Data Panel - Top Right -->
                     <div class="absolute top-4 right-4 data-panel rounded-xl p-4 min-w-[200px]">
-                        <div class="flex items-center gap-2 mb-3">
-                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                                <i class="fas fa-bolt text-green-400 text-sm"></i>
+                        <div class="border-t border-green-400/60 pt-1">
+                            <div class="flex items-center justify-end gap-1.5 mb-2">
+                                <div class="text-[0.65rem] text-slate-400 uppercase tracking-wider">Live Weight</div>
+                                <div class="inline-flex items-center gap-1 text-[0.6rem] text-emerald-400">
+                                    <i class="fas fa-bolt text-emerald-400 text-xs"></i>
+                                    <span>ACTIVE</span>
+                                </div>
                             </div>
-                            <div>
-                                <div class="text-[0.65rem] text-slate-400 uppercase tracking-wider">Species ID:</div>
-                                <div id="speciesName" class="text-base font-bold text-green-400">DETECTING...</div>
-                            </div>
-                        </div>
-                        <div class="border-t border-green-400/60 pt-3">
-                            <div class="text-[0.65rem] text-slate-400 uppercase tracking-wider mb-1">Processing Time:</div>
                             <div class="flex items-baseline gap-1 justify-end text-right">
                                 <span id="weightValue" class="text-3xl font-bold text-white">--.--</span>
-                                <span class="text-lg text-slate-400">SEC</span>
+                                <span class="text-lg text-slate-400">kg</span>
                                 <i id="weightIcon" class="fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin"></i>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demonstration: Honiara, Solomon Islands -->
+    <section class="py-16 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                    <p class="text-xs font-semibold tracking-[0.28em] text-emerald-600 uppercase">Live Demonstration</p>
+                </div>
+                <div class="flex flex-col lg:flex-row items-start gap-10">
+                    <div class="lg:w-1/2 order-1">
+                        <div id="honiaraWrapper" class="rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl mx-auto relative group" style="width:320px; height:500px;">
+                            <video id="honiaraVideo" playsinline class="w-full h-full object-cover">
+                                <source src="media/Solomon Island Demo Honiara Sept 2023 short for SEFSC.mp4?v=2" type="video/mp4">
+                            </video>
+                            <button id="honiaraOverlay" type="button" class="absolute inset-0 bg-slate-900/60 hover:bg-slate-900/70 transition-colors flex items-center justify-center text-white p-4 text-center">
+                                <div class="flex flex-col items-center justify-center space-y-2">
+                                    <div class="text-[10px] uppercase tracking-[0.28em] text-emerald-300">Field Demo · Honiara Market</div>
+                                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 shadow-lg">
+                                        <i class="fas fa-play text-white ml-1"></i>
+                                    </div>
+                                    <p class="text-sm font-semibold mt-1">Tap Or Click To Play</p>
+                                    <p class="text-[11px] text-emerald-100">Plays with sound · Make sure your device volume is up</p>
+                                </div>
+                            </button>
+                            <!-- Custom controls bar -->
+                            <div id="honiaraControls" class="absolute inset-x-0 bottom-0 text-white px-3 py-2 flex items-center justify-between gap-3 opacity-0 translate-y-2 transition-all duration-200 pointer-events-none">
+                                <!-- Time / progress -->
+                                <div class="flex items-center gap-2 flex-1">
+                                    <span id="honiaraTime" class="text-[11px] text-slate-200 drop-shadow-lg min-w-[58px]">0:00 / 0:00</span>
+                                    <input id="honiaraProgress" type="range" min="0" max="100" value="0" class="flex-1 h-1 accent-emerald-400 cursor-pointer">
+                                </div>
+                                <!-- Volume icon with hover popup -->
+                                <div id="honiaraVolumeWrapper" class="relative flex items-center">
+                                    <i id="honiaraVolumeIcon" class="fas fa-volume-up text-xs text-slate-200 drop-shadow-lg cursor-pointer"></i>
+                                    <!-- Vertical volume slider popup -->
+                                    <div id="honiaraVolumePopup" class="absolute bottom-full mb-2 right-0 bg-slate-900/90 rounded-lg p-2 opacity-0 pointer-events-none transition-opacity duration-200">
+                                        <input id="honiaraVolume" type="range" min="0" max="100" value="50" class="h-20 w-5 accent-emerald-400 cursor-pointer" style="writing-mode: bt-lr; appearance: none; -webkit-appearance: slider-vertical;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 space-y-4 order-2 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-emerald-600 text-center">
+                            <span class="block">Honiara Market</span>
+                            <span class="block my-3 checkered-divider mx-auto" style="width:60px; height:4px;"></span>
+                        </h2>
+                        <p class="text-slate-600 text-lg md:text-xl leading-relaxed max-w-xl mx-auto">
+                            Demo at the Solomon Islands National University and deployed in Honiara markets. FAST automates weight and length capture in seconds, even in busy, real-world conditions.
+                        </p>
+                        <ul class="space-y-3 text-slate-600 text-base md:text-lg text-left max-w-xl mx-auto">
+                            <li class="flex items-center gap-2 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> 2–3 seconds per fish with automated weight + length</li>
+                            <li class="flex items-center gap-2 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Minimal training required; video-only workflow for speed</li>
+                            <li class="flex items-center gap-2 whitespace-nowrap"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Data integrity and auditability for science and compliance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <!-- PRECISION AT SCALE -->
+            <div class="max-w-4xl mx-auto text-center mb-8">
+                <p class="text-xs md:text-sm font-semibold tracking-[0.35em] text-emerald-600 uppercase">PRECISION AT SCALE</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Every Detail Captured Instantly</h2>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">From a single image, FAST Platform extracts comprehensive data with surgical precision, making fishery data-entry, accuracy and file management simpler than ever before.</p>
+            </div>
+            <div class="max-w-6xl mx-auto mb-16">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Left: Image sequence -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white" style="aspect-ratio: 16/9;">
+                        <!-- Image sequence container -->
+                        <div id="zoomSequence" class="absolute inset-0">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image14.png" class="zoom-frame absolute inset-0 w-full h-full object-contain" data-frame="0" alt="Lobster capture - full view">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image15.png" class="zoom-frame absolute inset-0 w-full h-full object-contain opacity-0" data-frame="1" alt="Lobster capture - zoom level 1">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image16.png" class="zoom-frame absolute inset-0 w-full h-full object-contain opacity-0" data-frame="2" alt="Lobster capture - zoom level 2">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image17.png" class="zoom-frame absolute inset-0 w-full h-full object-contain opacity-0" data-frame="3" alt="Lobster capture - zoom level 3">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image18.png" class="zoom-frame absolute inset-0 w-full h-full object-contain opacity-0" data-frame="4" alt="Lobster capture - zoom level 4">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image19.png" class="zoom-frame absolute inset-0 w-full h-full object-contain opacity-0" data-frame="5" alt="Lobster capture - zoom level 5">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image20.png" class="zoom-frame absolute inset-0 w-full h-full object-contain opacity-0" data-frame="6" alt="Lobster capture - carapace detail 90%">
+                        </div>
+                        <!-- Text overlay (appears on final frame) -->
+                        <div id="zoomOverlay" class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex items-end justify-center pb-8 opacity-0 transition-opacity duration-700">
+                            <div class="text-center px-6">
+                                <div class="inline-block px-3 py-1 bg-emerald-500 text-white text-xs font-semibold rounded-full mb-2">FAST Platform</div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Microscopic Precision, Instant Results</h3>
+                                <p class="text-slate-200 text-sm">One capture. Infinite data points.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Details and capabilities -->
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Automated Intelligence at Work</h3>
+                            <p class="text-slate-600 leading-relaxed">FAST Platform zooms into anatomical detail while simultaneously recording measurements, species ID, timestamps, and metadata—transforming fishery operations from manual guesswork to automated excellence.</p>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 text-sm">Instant Anatomical Analysis</h4>
+                                    <p class="text-slate-600 text-sm">AI-powered zoom captures carapace details, body segments, and species-specific markers in milliseconds</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 text-sm">Comprehensive Metadata Capture</h4>
+                                    <p class="text-slate-600 text-sm">Every image includes precise measurements, species identification, timestamps, and location data</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 text-sm">Zero Manual Data Entry</h4>
+                                    <p class="text-slate-600 text-sm">Eliminates human error and paperwork—all data automatically organized and ready for analysis</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center mt-0.5">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 text-sm">Scalable File Management</h4>
+                                    <p class="text-slate-600 text-sm">Cloud-synced storage with intelligent indexing makes retrieval and compliance reporting effortless</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WORK SMARTER, NOT HARDER (now part of same section) -->
+            <div class="max-w-5xl mx-auto text-center mb-10">
+                <p class="text-xs md:text-sm font-semibold tracking-[0.35em] text-emerald-600 uppercase">WORK SMARTER, NOT HARDER</p>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mt-4">Say Goodbye to Rulers, Clipboards &amp; Data Entry Errors</h2>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-8 text-slate-600 text-base leading-relaxed">
+                <div class="space-y-10 text-sm md:text-base">
+                    <!-- Row 1: Two lobster videos side-by-side -->
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
+                            <div class="relative w-full h-full" style="aspect-ratio: 16/9;">
+                                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                    <source src="media/object-detection-raw.mp4?v=1" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
+                            <div class="relative w-full h-full" style="aspect-ratio: 16/9;">
+                                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                                    <source src="Lobster-Measuring-25-sec.mp4?v=1" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Dropdowns revealing text for each video -->
+                    <div class="grid md:grid-cols-2 gap-6 items-start">
+                        <details class="group bg-[#f5f7fb] rounded-2xl p-5 shadow-sm border border-slate-200">
+                            <summary class="flex items-center justify-between cursor-pointer">
+                                <span class="font-semibold text-emerald-700">Lobster length determination in action</span>
+                                <span class="ml-3 text-xs text-emerald-500 group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="mt-3 space-y-2 text-slate-600">
+                                <p>Video scrubber automatically extracts objects like lobster so machine learning can identify key body points (e.g., carapace).</p>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 mb-1 text-sm">Automatic length and species ID</h4>
+                                    <p>AI provides automatic length determination and species ID.</p>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="group bg-[#f5f7fb] rounded-2xl p-5 shadow-sm border border-slate-200">
+                            <summary class="flex items-center justify-between cursor-pointer">
+                                <span class="font-semibold text-emerald-700">Video scrubber/Frame extraction</span>
+                                <span class="ml-3 text-xs text-emerald-500 group-open:rotate-180 transition-transform">▼</span>
+                            </summary>
+                            <div class="mt-3 text-slate-600 space-y-2">
+                                <p>Save countless hours reviewing footage while FAST automatically surfaces the clearest frames for each animal.</p>
+                                <p>Each selected frame is tagged with measurements, species ID, timestamps, and other metadata—so reliable data is cataloged without any extra work from you.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <ul class="grid md:grid-cols-2 gap-3 pt-4 text-sm md:text-base">
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span>Automated length</span></li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span>Automated weight</span></li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span>Automated species ID</span></li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span>Legacy image library, georeferenced and timestamped</span></li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span>Maturity studies</span></li>
+                    <li class="flex items-start gap-2"><span class="mt-1 w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span>Quality control in otolith processing</span></li>
+                </ul>
+
+                <!-- Platform overview details (moved from below testimonials) -->
+                <div class="pt-6 flex justify-center">
+                    <details class="group">
+                        <summary class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm md:text-base font-semibold cursor-pointer hover:bg-emerald-100 shadow-sm">
+                            <span>Click here to learn more about FAST Platform</span>
+                            <span class="transition-transform group-open:rotate-180 text-[10px]">▼</span>
+                        </summary>
+                        <div class="mt-3 space-y-3 text-slate-600 text-sm md:text-base max-w-3xl mx-auto text-left">
+                            <p>Starting in the U.S. Caribbean in 2014, we have been developing and fine tuning a suite of tools that can be easily used by fishers, community members, and fisheries professionals to collect reliable data in the field.</p>
+                            <p>Recent advances in computer vision technology provides a new opportunity to process large amounts of high-quality data that can be submitted from members of all communities. We have developed a platform which capitalizes on these technological advancements and creates an efficient and simple data collection process which can be used by virtually anyone.</p>
+                            <p>Today, the FAST Platform is giving fishers, community members, and fisheries professionals around the world a quick and easy tool to collect more and higher quality data for actionable science. In the process, the FAST Platform is developing into a core technology with emerging applications in fisheries biology.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Centered video from slide 28 (media5.mp4) -->
+                <div class="pt-8 flex justify-center">
+                    <div class="w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white relative" style="aspect-ratio: 16/9;">
+                        <video id="lobsterTransferVideo" class="w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="media/media5.mp4" type="video/mp4">
+                        </video>
+                        <div class="visualizer-side-mask-left"></div>
+                        <div class="visualizer-side-mask-right"></div>
+                    </div>
+                </div>
+
+                <div class="pt-4 text-center text-sm md:text-base font-semibold text-slate-900">
+                    Hardware and software designed to easily transfer to new fisheries and applications.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <p class="text-xs md:text-sm font-semibold tracking-[0.35em] text-emerald-600 uppercase">THE FUTURE IS FAST</p>
+                <h2 class="text-2xl md:text-4xl font-bold text-slate-900 mt-4">Our Integrated System</h2>
+                <p class="mt-4 text-slate-600 text-base leading-relaxed">The FAST Platform is an integrated suite of technologies for automatically collecting fisheries landings data. Because sampling environments can be challenging, each component of our system was designed with two goals in mind: increase the speed of sampling to minimize the burden on fishers and markets, and allow for reliable, defensible data to be collected by minimally trained individuals.</p>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">In the fisheries where the FAST Platform has been deployed, users are seeing a dramatic increase in the amount of data a single sampler can collect, as well as improved management due to the data's trustworthiness and simplicity.</p>
+            </div>
+            <div class="grid gap-8 md:grid-cols-3">
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flex flex-col h-full">
+                    <p class="text-xs font-semibold tracking-[0.25em] text-emerald-600 uppercase mb-2">Hardware</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Automated image and weight capture</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-1">Smart Sampling Stations capture weight (if needed) and an image of each fish. From images, length, weight, time, and location are automatically generated later.</p>
+                    <p class="text-sm text-slate-600 mb-3">Stations are custom built to fit any field situation and keep fish flowing. Dockside, on a ramp or beach, in a factory, or at sea, you can get the data FAST:</p>
+                    <ul class="text-sm text-slate-600 space-y-1">
+                        <li>2 seconds/fish with weight</li>
+                        <li>Video even faster if do not need weight</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flex flex-col h-full">
+                    <p class="text-xs font-semibold tracking-[0.25em] text-emerald-600 uppercase mb-2">Software</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Simple app for error free data entry</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-1">An app is loaded on the same device used in the Smart Sampling Station to capture images. The app is designed so that anyone who can push a button can collect data. No training and no writing required.</p>
+                    <p class="text-sm text-slate-600 mb-3">Data are stored locally in the app, quality controlled on entry, and uploaded to database when sampler has connectivity.</p>
+                    <ul class="text-sm text-slate-600 space-y-1">
+                        <li>Data entry errors virtually eliminated</li>
+                        <li>Custom fields and functionalities</li>
+                        <li>Staged rollouts to subsets of users</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flex flex-col h-full">
+                    <p class="text-xs font-semibold tracking-[0.25em] text-emerald-600 uppercase mb-2">Web Interface</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-3">Verify and access data</h3>
+                    <p class="text-sm text-slate-600 mb-3 flex-1">A web-based user portal provides data access, as well as a backend interface for AI-assigned species ID and length points.</p>
+                    <p class="text-sm text-slate-600 mb-3">Validated data are available almost immediately for analyses and adaptive management advice. Tune and validate a custom AI/ML algorithm for your fishery.</p>
+                    <ul class="text-sm text-slate-600 space-y-1">
+                        <li>Multiple redundancies to prevent data loss</li>
+                        <li>Global standards for encryption and authentication for complete confidence against unauthorized access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-8">
+                <p class="text-xs md:text-sm font-semibold tracking-[0.35em] text-emerald-600 uppercase">TESTIMONIALS</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">What Our Partners Are Saying</h2>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">Real users sharing how FAST Platform has improved their efficiency, accuracy and data sharing capabilities.</p>
+            </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Testimonial Video 1 (Slide 2) -->
+                    <div class="testimonial-video-wrapper transition-all duration-300 relative group">
+                        <div class="rounded-xl overflow-hidden shadow-xl border border-slate-200 bg-white relative">
+                            <video class="testimonial-video w-full h-full object-cover" loop playsinline data-video-id="1">
+                                <source src="media/media1.mp4" type="video/mp4">
+                            </video>
+                            <!-- Play Overlay -->
+                            <div class="video-play-overlay absolute inset-0 bg-slate-900/40 flex items-center justify-center cursor-pointer transition-opacity duration-300">
+                                <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-colors">
+                                    <i class="fas fa-play text-white text-xl ml-1"></i>
+                                </div>
+                            </div>
+                            <!-- Custom Controls (show on hover) -->
+                            <div class="video-custom-controls absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="flex items-center gap-3">
+                                    <button class="video-play-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <input type="range" class="video-progress flex-1" min="0" max="100" value="0" step="0.1">
+                                    <span class="video-time text-white text-xs">0:00 / 0:00</span>
+                                    <button class="video-volume-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <button class="video-fullscreen-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial Video 2 (Slide 3) -->
+                    <div class="testimonial-video-wrapper transition-all duration-300 relative group">
+                        <div class="rounded-xl overflow-hidden shadow-xl border border-slate-200 bg-white relative">
+                            <video class="testimonial-video w-full h-full object-cover" loop playsinline data-video-id="2">
+                                <source src="media/media2.mp4" type="video/mp4">
+                            </video>
+                            <!-- Play Overlay -->
+                            <div class="video-play-overlay absolute inset-0 bg-slate-900/40 flex items-center justify-center cursor-pointer transition-opacity duration-300">
+                                <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-colors">
+                                    <i class="fas fa-play text-white text-xl ml-1"></i>
+                                </div>
+                            </div>
+                            <!-- Custom Controls (show on hover) -->
+                            <div class="video-custom-controls absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="flex items-center gap-3">
+                                    <button class="video-play-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <input type="range" class="video-progress flex-1" min="0" max="100" value="0" step="0.1">
+                                    <span class="video-time text-white text-xs">0:00 / 0:00</span>
+                                    <button class="video-volume-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <button class="video-fullscreen-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial Video 3 (Slide 5) -->
+                    <div class="testimonial-video-wrapper transition-all duration-300 relative group">
+                        <div class="rounded-xl overflow-hidden shadow-xl border border-slate-200 bg-white relative">
+                            <video class="testimonial-video w-full h-full object-cover" loop playsinline data-video-id="3">
+                                <source src="media/pptx_FAST_video_images/ppt/media/media3.mp4?v=1" type="video/mp4">
+                            </video>
+                            <!-- Play Overlay -->
+                            <div class="video-play-overlay absolute inset-0 bg-slate-900/40 flex items-center justify-center cursor-pointer transition-opacity duration-300">
+                                <div class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center shadow-lg hover:bg-emerald-600 transition-colors">
+                                    <i class="fas fa-play text-white text-xl ml-1"></i>
+                                </div>
+                            </div>
+                            <!-- Custom Controls (show on hover) -->
+                            <div class="video-custom-controls absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="flex items-center gap-3">
+                                    <button class="video-play-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <input type="range" class="video-progress flex-1" min="0" max="100" value="0" step="0.1">
+                                    <span class="video-time text-white text-xs">0:00 / 0:00</span>
+                                    <button class="video-volume-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <button class="video-fullscreen-btn text-white hover:text-emerald-400 transition-colors">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- CUSTOM AI divider heading -->
+                <div class="mb-10 text-center">
+                    <p class="text-xs md:text-sm font-semibold tracking-[0.35em] text-emerald-600 uppercase">CLOUD-BASED</p>
+                    <h2 class="mt-2 text-2xl md:text-3xl font-bold text-slate-900">Globally Accessible Data Pipeline</h2>
+                </div>
+
+                <!-- AI Training Sequence -->
+                <div class="mb-12">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white mx-auto" style="max-width: 800px; aspect-ratio: 16/9;">
+                        <!-- Image sequence container (Slides 11-19, 37, 38 + Custom AI Flipbook images) -->
+                        <div id="aiSequence" class="absolute inset-0">
+                            <!-- 1: Slide 11 -->
+                            <img src="media/pptx_FAST_video_images/ppt/media/image6.png" class="ai-frame absolute inset-0 w-full h-full object-cover" data-frame="0" alt="Slide 11">
+                            <!-- 2: Slide 12 (nudge crop down to show full rows of fish) -->
+                            <img src="media/pptx_FAST_video_images/ppt/media/image7.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" style="object-position: center 30%;" data-frame="1" alt="Slide 12">
+                            <!-- 3: Gallery view batch labeling (replaces original 3rd frame) -->
+                            <img src="media/Custom AI Flipbook/Gallery view-batch labeling.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="2" alt="Gallery view batch labeling">
+                            <!-- 4: Multiple fish scale photo -->
+                            <img src="media/Custom AI Flipbook/multiple fish scale phot.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="3" alt="Multiple fish scale photo">
+                            <!-- 5: Slide 15 -->
+                            <img src="media/pptx_FAST_video_images/ppt/media/image9.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="4" alt="Slide 15">
+                            <!-- 6: Screenshot 2025-08-17 (swapped from later in sequence) -->
+                            <img src="media/Custom AI Flipbook/Screenshot-2025-08-17-213457.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="5" alt="Screenshot 2025-08-17">
+                            <!-- 7-9: Slides 17-19 -->
+                            <img src="media/pptx_FAST_video_images/ppt/media/image11.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="6" alt="Slide 17">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image12.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="7" alt="Slide 18">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image13.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="8" alt="Slide 19">
+                            <!-- 10-11: Slides 37-38 -->
+                            <img src="media/pptx_FAST_video_images/ppt/media/image38.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="9" alt="Slide 37">
+                            <img src="media/pptx_FAST_video_images/ppt/media/image39.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="10" alt="Slide 38">
+                            <!-- 12-14: Custom AI Flipbook closing sequence -->
+                            <img src="media/Custom AI Flipbook/API-view-fish on board.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="11" alt="API view fish on board">
+                            <img src="media/Custom AI Flipbook/analytics.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="12" alt="Analytics view">
+                            <img src="media/Custom AI Flipbook/data evaluated by Ai &amp; QA_QC.png" class="ai-frame absolute inset-0 w-full h-full object-cover opacity-0" data-frame="13" alt="Data evaluated by AI & QA/QC">
+                        </div>
+                        <!-- Text overlay (appears on final frame) -->
+                        <div id="aiOverlay" class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex items-end justify-center pb-8 opacity-0 transition-opacity duration-700">
+                            <div class="text-center px-6">
+                                <div class="inline-block px-3 py-1 bg-emerald-500 text-white text-xs font-semibold rounded-full mb-2">FAST Platform</div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Collect &amp; share data in real time</h3>
+                                <p class="text-slate-200 text-sm">Transfer learning adapts to your fishery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Left-aligned CTA under visualization with dropdown details -->
+                <div class="mt-10 max-w-[800px] mx-auto text-left">
+                    <details class="group">
+                        <summary class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm font-semibold cursor-pointer select-none">
+                            <span>Read more about our custom AI pipeline</span>
+                            <span class="text-xs transition-transform group-open:rotate-180">▼</span>
+                        </summary>
+                        <div class="mt-4 text-left bg-white/80 rounded-2xl border border-emerald-100 px-5 py-4 shadow-sm max-w-3xl mx-auto">
+                            <h3 class="text-base font-bold text-slate-900 mb-1">
+                                To be nimble and applicable...
+                            </h3>
+                            <p class="text-sm text-slate-700">
+                                ...to every fishery that is interested in using the FAST Platform, we start with the identification and length determination algorithms from other locations. As partners initiate a new data collection program, each image will be identified to species by a local expert until a representative sample of the top 20–30 species are collected. We then use a process called transfer learning to "tune" our algorithm to the reference library of the species of interest, at which point we provide partners with an open source code specific to their fishery.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Majuro factory employees photo band -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="flex flex-col justify-center h-full">
+                    <div class="space-y-4 bg-[#f5f7fb] rounded-2xl p-6 border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-900">If you can take a picture, you can do great science.</h3>
+                        <p class="text-slate-600 text-base leading-relaxed">Ease of use for global applications, can be used by anyone with minimal training(~5 min demo)</p>
+                    </div>
+
+                    <div class="mt-4 flex justify-center">
+                        <details class="group">
+                            <summary class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-emerald-50 text-emerald-700 text-sm md:text-base font-semibold cursor-pointer hover:bg-emerald-100 shadow-sm">
+                                <span>Click here to learn more</span>
+                                <span class="transition-transform group-open:rotate-180 text-[10px]">▼</span>
+                            </summary>
+                            <div class="mt-3 space-y-2 text-slate-600 text-sm">
+                                <p>The system automatically turns the picture into data that is quality controlled, standardized, and documented with a curated library of images.</p>
+                                <p>Fishers, students, and virtually all community members can participate, which gives greater transparency and faith in the data and decisions.</p>
+                                <p>Just as useful for community-based work, cooperative studies, co-management, citizen science, and student research as it is for the highest level fisheries science.</p>
+                                <p>Over time and across geographies, a consistent format facilitates cross site analysis of large-scale dynamics (e.g., evaluating the impacts of climate change).</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-start">
+                    <p class="text-xs font-semibold tracking-[0.28em] text-emerald-600 uppercase mb-3">Factory employees in Majuro, RMI, operating the FAST Platform after only a 5 minute demo</p>
+                    <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
+                        <img src="media/fisherman using platform.jpg" alt="Factory employees in Majuro, RMI, operating the FAST Platform" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-emerald-600">FAST Platform Is Growing FAST</h2>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">The FAST Platform is currently operating in the following countries:</p>
+            </div>
+
+            <!-- Map-style country grid -->
+            <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- U.S. Southeast & Gulf of Mexico/America (U.S. flag style) -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col items-center gap-3">
+                    <div class="relative w-full max-w-[180px] aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg viewBox="0 0 120 80" class="w-24 h-16" aria-hidden="true">
+                            <!-- Base red field -->
+                            <rect width="120" height="80" fill="#b22234" />
+                            <!-- White stripes -->
+                            <rect y="10" width="120" height="10" fill="#ffffff" />
+                            <rect y="30" width="120" height="10" fill="#ffffff" />
+                            <rect y="50" width="120" height="10" fill="#ffffff" />
+                            <!-- Blue canton -->
+                            <rect width="55" height="40" fill="#3c3b6e" />
+                        </svg>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold text-slate-900 text-center">U.S. Southeast &amp; Gulf of Mexico/America</p>
+                </div>
+
+                <!-- U.S. Virgin Islands -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col items-center gap-3">
+                    <div class="relative w-full max-w-[180px] aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg viewBox="0 0 120 80" class="w-24 h-16" aria-hidden="true">
+                            <!-- White field -->
+                            <rect width="120" height="80" fill="#ffffff" />
+                            <!-- Blue side bars -->
+                            <rect x="0" y="10" width="10" height="60" fill="#0052b4" />
+                            <rect x="110" y="10" width="10" height="60" fill="#0052b4" />
+                            <!-- Gold emblem hint -->
+                            <circle cx="60" cy="40" r="14" fill="#ffda44" />
+                        </svg>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold text-slate-900 text-center">U.S. Virgin Islands</p>
+                </div>
+
+                <!-- Puerto Rico -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col items-center gap-3">
+                    <div class="relative w-full max-w-[180px] aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg viewBox="0 0 120 80" class="w-24 h-16" aria-hidden="true">
+                            <!-- Red field -->
+                            <rect width="120" height="80" fill="#d80027" />
+                            <!-- White stripe -->
+                            <rect y="30" width="120" height="20" fill="#ffffff" />
+                            <!-- Blue triangle -->
+                            <polygon points="0,0 60,40 0,80" fill="#0052b4" />
+                        </svg>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold text-slate-900 text-center">Puerto Rico</p>
+                </div>
+
+                <!-- Republic of the Marshall Islands -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col items-center gap-3">
+                    <div class="relative w-full max-w-[180px] aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg viewBox="0 0 120 80" class="w-24 h-16" aria-hidden="true">
+                            <!-- Blue field -->
+                            <rect width="120" height="80" fill="#0052b4" />
+                            <!-- Diagonal stripes -->
+                            <polygon points="-10,70 40,80 130,20 130,0" fill="#ff9811" />
+                            <polygon points="-10,60 30,70 130,15 130,0" fill="#ffffff" />
+                        </svg>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold text-slate-900 text-center">Republic of the Marshall Islands</p>
+                </div>
+
+                <!-- Solomon Islands -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col items-center gap-3">
+                    <div class="relative w-full max-w-[180px] aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg viewBox="0 0 120 80" class="w-24 h-16" aria-hidden="true">
+                            <!-- Green/blue halves -->
+                            <rect width="120" height="80" fill="#0052b4" />
+                            <polygon points="0,80 120,80 120,40 0,0" fill="#006847" />
+                            <!-- Yellow diagonal -->
+                            <polygon points="0,10 120,70 120,60 0,0" fill="#ffda44" />
+                        </svg>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold text-slate-900 text-center">Solomon Islands</p>
+                </div>
+
+                <!-- Belize -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col items-center gap-3">
+                    <div class="relative w-full max-w-[180px] aspect-[4/3] rounded-xl bg-slate-100 flex items-center justify-center overflow-hidden">
+                        <svg viewBox="0 0 120 80" class="w-24 h-16" aria-hidden="true">
+                            <!-- Blue field -->
+                            <rect width="120" height="80" fill="#0052b4" />
+                            <!-- Red top/bottom bands -->
+                            <rect y="0" width="120" height="10" fill="#d80027" />
+                            <rect y="70" width="120" height="10" fill="#d80027" />
+                            <!-- White emblem circle -->
+                            <circle cx="60" cy="40" r="16" fill="#ffffff" />
+                        </svg>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold text-slate-900 text-center">Belize</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honiara Partners & Field Work -->
+    <section class="py-16 bg-[#f5f7fb]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-8">
+                <p class="text-xs md:text-sm font-semibold tracking-[0.35em] text-emerald-600 uppercase">PARTNERS IN THE FIELD</p>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Piloting FAST in Honiara, Solomon Islands</h2>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">Working alongside local ministries and conservation partners to bring automated fisheries data collection directly into busy markets.</p>
+            </div>
+
+            <!-- Partner logos from slide 30 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+                    <div class="h-16 flex items-center">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image22.PNG" alt="Solomon Islands Government - Ministry of Fisheries and Marine Resources" class="h-16 w-auto object-contain">
+                    </div>
+                    <div class="h-14 flex items-center">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image23.png" alt="MER Consultants" class="h-14 w-auto object-contain">
+                    </div>
+                    <div class="h-14 flex items-center">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image24.png" alt="WWF" class="h-14 w-auto object-contain">
+                    </div>
+                </div>
+            </div>
+
+            <!-- People photos row that cycles every 4 seconds -->
+            <div class="max-w-5xl mx-auto">
+                <div id="partnerPhotoRow" class="partner-photo-strip rounded-3xl border border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.08)] min-h-[260px] md:min-h-[320px]">
+                    <div class="partner-photo-slide is-active">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image25.jpeg" alt="Field team operating FAST in Honiara market" class="w-full h-full object-cover">
+                    </div>
+                    <div class="partner-photo-slide">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image29.jpeg" alt="Enumerators recording catch data with FAST" class="w-full h-full object-cover">
+                    </div>
+                    <div class="partner-photo-slide">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image30.jpeg" alt="FAST platform table in use at Honiara market" class="w-full h-full object-cover">
+                    </div>
+                    <div class="partner-photo-slide">
+                        <img src="media/pptx_FAST_video_images/ppt/media/image26.jpg" alt="Partners and collaborators group photo" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="rounded-3xl border border-slate-200 bg-white px-6 py-10 md:px-10 md:py-12 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+                    <div class="max-w-3xl mx-auto text-center mb-6">
+                        <h2 class="text-2xl md:text-3xl font-bold text-emerald-600">Emerging Applications</h2>
+                        <p class="mt-3 text-slate-600 text-base leading-relaxed">The <span class="inline-block border-b border-emerald-500 pb-0.5">FAST Platform</span> has developed into a core technology and is now also being used for various applications in fisheries biology, including:</p>
+                    </div>
+                    <div class="max-w-3xl mx-auto">
+                        <ul class="grid gap-3 text-sm md:text-base text-slate-600">
+                            <li class="flex items-center justify-center gap-4">
+                                <span class="inline-block font-semibold text-slate-900">Otolith Studies</span>
+                                <span class="text-emerald-600 text-xl md:text-2xl font-extrabold leading-none">&amp;</span>
+                                <span class="inline-block font-semibold text-slate-900">Maturity Stage Studies</span>
+                            </li>
+                            <li class="flex justify-center">
+                                <span class="inline-flex items-center px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-xs md:text-sm text-slate-600 text-center max-w-xl">
+                                    <span>Evaluating the ability of AI to detect species differences in hammerhead shark cephalofoil patterns in comparison to genetic results</span>
+                                </span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8 text-center">
+                            <p class="text-sm md:text-base text-emerald-600 uppercase tracking-[0.25em] font-medium">How will you use FAST Platform?</p>
                         </div>
                     </div>
                 </div>
@@ -422,18 +1231,19 @@
     <section class="toc-section py-16">
         <div class="container mx-auto px-6">
             <div class="max-w-4xl mx-auto text-center mb-10">
-                <p class="text-sm font-semibold tracking-[0.3em] text-slate-500 uppercase">Explore FAST PLATFORM.TECH</p>
+                <p class="text-sm font-semibold tracking-[0.3em] text-emerald-600 uppercase">Explore FAST PLATFORM.TECH</p>
                 <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">Dive in Below</h2>
                 <div class="mt-4 flex justify-center">
                     <div class="checkered-divider max-w-md"></div>
                 </div>
             </div>
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div class="grid gap-6 md:grid-cols-2 max-w-2xl mx-auto">
                 <a href="platform.html" class="toc-card block text-left">
                     <h3 class="text-sm font-semibold text-slate-900 mb-2">The Platform</h3>
                     <p class="text-xs text-slate-500 mb-3">See how FAST measures, identifies, and uploads catch in seconds.</p>
                     <span class="inline-flex items-center text-xs font-semibold text-emerald-600">View capabilities <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
                 </a>
+                <!-- Solutions and Case Studies cards temporarily hidden for launch
                 <a href="solutions.html" class="toc-card block text-left">
                     <h3 class="text-sm font-semibold text-slate-900 mb-2">Use Cases</h3>
                     <p class="text-xs text-slate-500 mb-3">From small-scale fleets to national programs, explore deployments.</p>
@@ -444,153 +1254,39 @@
                     <p class="text-xs text-slate-500 mb-3">Real-world results from pilots and production fisheries.</p>
                     <span class="inline-flex items-center text-xs font-semibold text-emerald-600">Read stories <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
                 </a>
+                -->
                 <a href="about.html" class="toc-card block text-left">
-                    <h3 class="text-sm font-semibold text-slate-900 mb-2">About FAST</h3>
+                    <h3 class="text-sm font-semibold text-slate-900 mb-2">Our Mission</h3>
                     <p class="text-xs text-slate-500 mb-3">Meet the team and science behind the platform.</p>
                     <span class="inline-flex items-center text-xs font-semibold text-emerald-600">Meet the team <i class="fas fa-arrow-right ml-1 text-[10px]"></i></span>
                 </a>
             </div>
         </div>
     </section>
-    
-    <!-- Field Deployment: Honiara, Solomon Islands -->
-    <section class="py-16 bg-[#f5f7fb]">
-        <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                    <p class="text-xs font-semibold tracking-[0.28em] text-slate-500 uppercase">Field Deployment</p>
-                </div>
-                <div class="flex flex-col lg:flex-row items-start gap-10">
-                    <div class="lg:w-1/2 order-1">
-                        <div class="rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl mx-auto relative" style="width:320px; height:500px;">
-                            <video id="honiaraVideo" playsinline class="w-full h-full object-cover">
-                                <source src="media/Solomon Island Demo Honiara Sept 2023 short for SEFSC.mp4?v=2" type="video/mp4">
-                            </video>
-                            <button id="honiaraOverlay" type="button" class="absolute inset-0 bg-slate-900/60 hover:bg-slate-900/70 transition-colors flex flex-col justify-between items-center text-white p-4 text-center">
-                                <div class="text-[10px] uppercase tracking-[0.28em] text-emerald-300">Field Demo · Honiara Market</div>
-                                <div class="flex-1 flex items-center justify-center">
-                                    <div class="text-center space-y-2">
-                                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-500 shadow-lg mb-1">
-                                            <i class="fas fa-play text-white ml-1"></i>
-                                        </div>
-                                        <p class="text-sm font-semibold">Tap or click to play the 2–3 seconds per fish demo</p>
-                                        <p class="text-[11px] text-emerald-100">Plays with sound · Make sure your device volume is up</p>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="lg:w-1/2 space-y-4 order-2 text-center">
-                        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center">
-                            <span class="block">Honiara Market</span>
-                            <span class="block my-3 checkered-divider mx-auto" style="width:60px; height:4px;"></span>
-                        </h2>
-                        <p class="text-slate-600 text-base leading-relaxed">
-                            Demo at the Solomon Islands National University and deployed in Honiara markets. FAST automates weight and length capture in seconds, even in busy, real-world conditions.
-                        </p>
-                        <ul class="space-y-2 text-slate-600 text-sm">
-                            <li class="flex items-center gap-2 justify-center"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> 2–3 seconds per fish with automated weight + length</li>
-                            <li class="flex items-center gap-2 justify-center"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Minimal training required; video-only workflow for speed</li>
-                            <li class="flex items-center gap-2 justify-center"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Data integrity and auditability for science and compliance</li>
-                        </ul>
-                    </div>
-                </div>
+
+    <section class="py-20 bg-emerald-600">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Hooked?</h2>
+            <p class="text-lg md:text-xl mb-6 opacity-90 max-w-2xl mx-auto">For more information, please reach out to our team at the contact info below. We look forward to collaborating.</p>
+            <div class="space-y-2 text-sm md:text-base">
+                <p><span class="font-semibold">Email:</span> <a href="mailto:info@fastplatform.tech" class="underline">info@fastplatform.tech</a></p>
+                <p><span class="font-semibold">Call / WhatsApp:</span> <a href="tel:+18046849522" class="underline">+1.804.684.9522 (USA)</a></p>
+            </div>
+            <div class="mt-6">
+                <a href="contact.html#contact-form" class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-white text-emerald-600 font-semibold text-sm md:text-base hover:bg-slate-100 transition-colors">Talk to our team</a>
             </div>
         </div>
     </section>
-    
-    <!-- Impact Metrics Section - Matching Reference -->
+
+    <!-- Impact Metrics Section - Checkerboard Band Only -->
     <section class="impact-section py-20 relative">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-                <!-- Left - Headlines -->
-                <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                        <span class="text-white">FROM 4 PEOPLE TO 1</span><br>
-                        <span class="text-white">FROM 5 SECONDS TO 2</span>
-                    </h2>
-                </div>
-                
-                <!-- Right - Metric Icons -->
-                <div class="lg:w-1/2 flex items-center justify-center gap-8">
-                    <!-- People metric -->
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center gap-1 text-slate-500">
-                            <i class="fas fa-chevron-left text-xs"></i>
-                            <i class="fas fa-user text-2xl"></i>
-                            <i class="fas fa-user text-2xl"></i>
-                            <i class="fas fa-user text-2xl"></i>
-                            <i class="fas fa-user text-2xl"></i>
-                            <i class="fas fa-chevron-right text-xs"></i>
-                        </div>
-                        <i class="fas fa-arrow-right text-cyan-400"></i>
-                        <div class="text-cyan-400">
-                            <i class="fas fa-user text-2xl"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- Time metric -->
-                    <div class="flex items-center gap-4">
-                        <div class="flex items-center gap-2 text-slate-500">
-                            <span class="text-2xl font-bold">5</span>
-                            <span class="text-lg font-bold">SECONDS</span>
-                            <i class="fas fa-clock text-xl"></i>
-                        </div>
-                        <div class="flex items-center gap-2 text-cyan-400">
-                            <span class="text-2xl font-bold">2</span>
-                            <i class="fas fa-arrow-right"></i>
-                            <span class="text-2xl font-bold">3</span>
-                            <i class="fas fa-clock text-xl"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Founder's Credibility Section - Matching Reference -->
-    <section class="py-16 bg-slate-950">
-        <div class="container mx-auto px-6">
-            <div class="founder-section rounded-2xl p-8 md:p-12">
-                <div class="grid md:grid-cols-3 gap-8 items-center">
-                    <!-- Left - Founder Image -->
-                    <div class="relative">
-                        <div class="aspect-square max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-slate-700/50">
-                            <img src="media/fast-bottom-left.jpg" alt="FAST Platform deployment" class="w-full h-full object-cover object-left">
-                        </div>
-                    </div>
-                    
-                    <!-- Right - Content -->
-                    <div class="space-y-6 text-center">
-                        <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-wide text-slate-900">
-                            Built by Biologists for the Field
-                        </h2>
-                        <blockquote class="text-lg md:text-xl text-slate-800 leading-relaxed">
-                            "We don't just collect data;<br>
-                            we use it to tell the ocean's story."
-                        </blockquote>
-                        <p class="text-slate-800 text-sm leading-relaxed max-w-xl mx-auto">
-                            Dr. Todd Gedamke received his PhD from the Virginia Institute of Marine Science. His research focused on stock assessment and data-limited models. After serving as Branch Chief at NOAA's Southeast Fisheries Science Center, he founded MER Consultants to bring cutting-edge AI technology to fisheries management.
-                        </p>
-                        <div class="pt-2 flex justify-center">
-                            <a href="about.html#story" class="cta-gold px-6 py-3 rounded-md text-sm inline-flex items-center justify-center uppercase tracking-wider">
-                                Meet Our Founder
-                            </a>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <div class="aspect-square max-w-[300px] mx-auto md:mx-0 rounded-xl overflow-hidden border border-slate-700/50">
-                            <img src="media/fast-bottom-hero.png" alt="FAST Platform in the field" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container mx-auto px-6 impact-content">
+            <!-- Intentionally left without text/icons for now; checkerboard band acts as a visual separator -->
         </div>
     </section>
     
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+    <footer class="bg-black border-t border-black/70 py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- Logo & Mission -->
@@ -609,7 +1305,6 @@
                     <h4 class="font-semibold mb-4 text-white">Navigation</h4>
                     <ul class="space-y-2 text-slate-500 text-sm">
                         <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
-                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
                         <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
                         <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
                     </ul>
@@ -678,56 +1373,45 @@
             });
         }
         
-        // Video-synced weight and species detection
+        // Video-synced weight simulation for hero overlay
         (function() {
             const video = document.getElementById('heroVideo');
-            const speciesEl = document.getElementById('speciesName');
             const weightEl = document.getElementById('weightValue');
             const weightIcon = document.getElementById('weightIcon');
             
-            if (!video || !speciesEl || !weightEl) return;
-            
-            // Configuration - species detection and processing time simulation
-            const SPECIES_NAME = "RED SNAPPER";
-            const TIME_MIN_SECONDS = 2.0;  // Minimum processing time
-            const TIME_MAX_SECONDS = 3.38; // Maximum processing time
-            const SPECIES_DETECT_TIME = 0.8; // Seconds into video when species is detected
-            const CYCLE_START_TIME = 1.2; // Seconds when first timing cycle starts
-            const CYCLE_DURATION = 2000; // Each timing cycle lasts 2 seconds
+            if (!video || !weightEl) return;
+
+            // Configuration - weight simulation in kg
+            const PRESET_WEIGHTS = [0.140, 0.115]; // First two stable values (kg)
+            const RANDOM_MIN_KG = 0.115;  // Lowest random stable weight
+            const RANDOM_MAX_KG = 0.23;   // Highest random stable weight
+            const CYCLE_DURATION = 2000;  // Each weighting cycle lasts 2 seconds (ms)
+            const CYCLE_STABLE_START_FRACTION = 0.825; // Point in cycle when the stable value appears (longer hold)
+            const FIRST_STABLE_WEIGHT_TIME = 1.3; // Seconds in video when first 0.140 kg should appear (nudged earlier)
+            const CYCLE_START_TIME = FIRST_STABLE_WEIGHT_TIME - (CYCLE_DURATION * CYCLE_STABLE_START_FRACTION) / 1000;
             
             let lastTime = -1;
             let animationFrame = null;
             let currentCycleIndex = -1;
-            let currentTargetTime = TIME_MIN_SECONDS;
+            let currentTargetWeight = PRESET_WEIGHTS[0];
             
             function resetDisplay() {
-                speciesEl.textContent = "DETECTING...";
-                speciesEl.classList.remove('text-green-400');
-                speciesEl.classList.add('text-slate-400');
                 weightEl.textContent = "--.--";
                 weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
                 currentCycleIndex = -1;
             }
             
-            function updateDisplay(currentTime) {
-                // Species detection
-                if (currentTime >= SPECIES_DETECT_TIME) {
-                    if (speciesEl.textContent !== SPECIES_NAME) {
-                        speciesEl.textContent = SPECIES_NAME;
-                        speciesEl.classList.remove('text-slate-400');
-                        speciesEl.classList.add('text-green-400');
-                    }
-                } else {
-                    if (speciesEl.textContent !== "DETECTING...") {
-                        speciesEl.textContent = "DETECTING...";
-                        speciesEl.classList.remove('text-green-400');
-                        speciesEl.classList.add('text-slate-400');
-                    }
+            function pickTargetWeight(cycleNumber) {
+                if (cycleNumber < PRESET_WEIGHTS.length) {
+                    return PRESET_WEIGHTS[cycleNumber];
                 }
-                
-                // Processing time calculation - how long FAST takes to analyze
+                return RANDOM_MIN_KG + Math.random() * (RANDOM_MAX_KG - RANDOM_MIN_KG);
+            }
+            
+            function updateDisplay(currentTime) {
+                // Weight calculation timeline
                 if (currentTime < CYCLE_START_TIME) {
-                    // Before first timing cycle
+                    // Before first weighting cycle
                     weightEl.textContent = "--.--";
                     weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
                 } else {
@@ -736,31 +1420,32 @@
                     const cycleNumber = Math.floor(elapsedTime / CYCLE_DURATION);
                     const cycleProgress = (elapsedTime % CYCLE_DURATION) / CYCLE_DURATION;
                     
-                    // Get target processing time for this cycle
+                    // Get target weight for this cycle
                     if (cycleNumber !== currentCycleIndex) {
                         currentCycleIndex = cycleNumber;
-                        currentTargetTime = TIME_MIN_SECONDS + Math.random() * (TIME_MAX_SECONDS - TIME_MIN_SECONDS);
+                        currentTargetWeight = pickTargetWeight(cycleNumber);
                     }
-                    const targetTime = currentTargetTime;
+                    const targetWeight = currentTargetWeight;
                     
                     if (cycleProgress < 0.75) {
                         // First 75% of cycle: show dashes (fish being moved/positioned)
                         weightEl.textContent = "--.--";
                         weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
-                    } else if (cycleProgress < 0.875) {
-                        // Next 12.5%: animate time calculation
-                        const animProgress = (cycleProgress - 0.75) / 0.125;
-                        const displayTime = targetTime * animProgress;
+                    } else if (cycleProgress < CYCLE_STABLE_START_FRACTION) {
+                        // Shorter animation window before lock-in
+                        const animWindow = CYCLE_STABLE_START_FRACTION - 0.75;
+                        const animProgress = (cycleProgress - 0.75) / animWindow;
+                        const displayWeight = targetWeight * animProgress;
                         
                         // Add some "noise" to simulate real-time calculation
-                        const noise = (Math.random() - 0.5) * 0.05 * (1 - animProgress);
-                        const finalTime = Math.max(0, displayTime + noise);
+                        const noise = (Math.random() - 0.5) * 0.01 * (1 - animProgress);
+                        const finalWeight = Math.max(0, displayWeight + noise);
                         
-                        weightEl.textContent = finalTime.toFixed(2);
+                        weightEl.textContent = finalWeight.toFixed(3);
                         weightIcon.className = "fas fa-sync-alt text-green-400 text-xs ml-2 animate-spin";
                     } else {
-                        // Final 12.5%: show stable processing time
-                        weightEl.textContent = targetTime.toFixed(2);
+                        // Final 12.5%: show stable weight
+                        weightEl.textContent = targetWeight.toFixed(3);
                         weightIcon.className = "fas fa-check-circle text-emerald-400 text-xs ml-2";
                     }
                 }
@@ -809,49 +1494,525 @@
             }
         })();
 
-        // Honiara field deployment: click-to-play with sound
+        // Honiara field deployment: custom controls + auto/play with scroll + click-to-play fallback
         (function() {
             const honiaraVideo = document.getElementById('honiaraVideo');
             const honiaraOverlay = document.getElementById('honiaraOverlay');
+            const honiaraWrapper = document.getElementById('honiaraWrapper');
+            const honiaraControls = document.getElementById('honiaraControls');
+            const honiaraProgress = document.getElementById('honiaraProgress');
+            const honiaraTime = document.getElementById('honiaraTime');
+            const honiaraVolume = document.getElementById('honiaraVolume');
+            const honiaraVolumeIcon = document.getElementById('honiaraVolumeIcon');
+            const honiaraVolumeWrapper = document.getElementById('honiaraVolumeWrapper');
+            const honiaraVolumePopup = document.getElementById('honiaraVolumePopup');
 
-            if (!honiaraVideo || !honiaraOverlay) return;
+            if (!honiaraVideo || !honiaraOverlay || !honiaraWrapper || !honiaraControls) return;
 
             // Ensure initial state
             honiaraVideo.pause();
             honiaraVideo.currentTime = 0;
-            honiaraVideo.muted = false; // we want sound once user clicks
+            honiaraVideo.muted = false; // we want sound when allowed
+            honiaraVideo.volume = 0.5; // default to 50%
 
-            // On click/tap, start playback with sound and show controls
-            honiaraOverlay.addEventListener('click', function () {
-                // Show native controls once playing
-                honiaraVideo.setAttribute('controls', 'controls');
-
-                // Some browsers require explicit user-gesture volume/unmute
-                honiaraVideo.muted = false;
-                try {
-                    honiaraVideo.volume = 1.0;
-                } catch (e) {
-                    // Ignore if volume cannot be set
+            function showControls() {
+                if (!honiaraVideo.paused) {
+                    honiaraControls.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
                 }
+            }
+
+            function hideControls() {
+                honiaraControls.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+            }
+
+            function showVolumePopup() {
+                if (honiaraVolumePopup) {
+                    honiaraVolumePopup.classList.remove('opacity-0', 'pointer-events-none');
+                }
+            }
+
+            function hideVolumePopup() {
+                if (honiaraVolumePopup) {
+                    honiaraVolumePopup.classList.add('opacity-0', 'pointer-events-none');
+                }
+            }
+
+            function syncVolumeFromSlider() {
+                if (!honiaraVolume) return;
+                const vol = (parseFloat(honiaraVolume.value) || 0) / 100;
+                try { honiaraVideo.volume = vol; } catch (e) {}
+                honiaraVideo.muted = vol === 0;
+                if (honiaraVolumeIcon) {
+                    honiaraVolumeIcon.className = vol === 0
+                        ? 'fas fa-volume-mute text-xs text-slate-200 drop-shadow-lg cursor-pointer'
+                        : 'fas fa-volume-up text-xs text-slate-200 drop-shadow-lg cursor-pointer';
+                }
+            }
+
+            function startPlayback() {
+                honiaraVideo.muted = false;
+                syncVolumeFromSlider();
 
                 const playPromise = honiaraVideo.play();
                 if (playPromise && typeof playPromise.then === 'function') {
                     playPromise.then(() => {
                         honiaraOverlay.classList.add('hidden');
                     }).catch(() => {
-                        // If playback fails (e.g., browser restriction), keep overlay visible
+                        // If playback with sound is blocked, leave video paused until user clicks
                     });
                 } else {
                     honiaraOverlay.classList.add('hidden');
                 }
+            }
+
+            honiaraOverlay.addEventListener('click', function () {
+                startPlayback();
             });
 
-            // Optionally re-show overlay when video ends
+            // Click on video toggles play/pause
+            honiaraVideo.addEventListener('click', function () {
+                if (honiaraVideo.paused) {
+                    startPlayback();
+                } else {
+                    honiaraVideo.pause();
+                    honiaraOverlay.classList.remove('hidden');
+                    hideControls();
+                }
+            });
+
+            // Re-show overlay when video ends
             honiaraVideo.addEventListener('ended', function () {
                 honiaraOverlay.classList.remove('hidden');
                 honiaraVideo.currentTime = 0;
-                honiaraVideo.removeAttribute('controls');
+                hideControls();
             });
+
+            // Scroll-triggered auto play/pause when video is fully in view
+            if (typeof IntersectionObserver !== 'undefined') {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.target !== honiaraVideo) return;
+                        const ratio = entry.intersectionRatio;
+
+                        // Start playback when video is ~100% visible
+                        if (ratio >= 0.98) {
+                            startPlayback();
+                        }
+                        // Pause when less than 50% visible
+                        else if (ratio <= 0.5) {
+                            if (!honiaraVideo.paused) {
+                                honiaraVideo.pause();
+                                honiaraOverlay.classList.remove('hidden');
+                                hideControls();
+                            }
+                        }
+                    });
+                }, {
+                    threshold: [0, 0.5, 0.98, 1]
+                });
+
+                observer.observe(honiaraVideo);
+            }
+
+            // Progress bar input -> seek
+            if (honiaraProgress) {
+                honiaraProgress.addEventListener('input', function () {
+                    if (!honiaraVideo.duration) return;
+                    const percent = parseFloat(this.value) || 0;
+                    honiaraVideo.currentTime = (honiaraVideo.duration * percent) / 100;
+                });
+            }
+
+            // Update progress + time display
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+
+            honiaraVideo.addEventListener('timeupdate', function () {
+                if (!honiaraVideo.duration) return;
+                const percent = (honiaraVideo.currentTime / honiaraVideo.duration) * 100;
+                if (honiaraProgress) honiaraProgress.value = percent;
+                if (honiaraTime) {
+                    honiaraTime.textContent = `${formatTime(honiaraVideo.currentTime)} / ${formatTime(honiaraVideo.duration)}`;
+                }
+            });
+
+            // Volume slider
+            if (honiaraVolume) {
+                honiaraVolume.addEventListener('input', function () {
+                    syncVolumeFromSlider();
+                });
+            }
+
+            // Show/hide controls on hover (only when playing)
+            if (honiaraWrapper) {
+                honiaraWrapper.addEventListener('mouseenter', showControls);
+                honiaraWrapper.addEventListener('mouseleave', hideControls);
+            }
+
+            // Volume popup hover behavior
+            if (honiaraVolumeWrapper) {
+                honiaraVolumeWrapper.addEventListener('mouseenter', showVolumePopup);
+                honiaraVolumeWrapper.addEventListener('mouseleave', hideVolumePopup);
+            }
+        })();
+
+        // Partner photo carousel: auto-advance every 4 seconds
+        (function() {
+            const strip = document.getElementById('partnerPhotoRow');
+            if (!strip) return;
+            const slides = Array.from(strip.querySelectorAll('.partner-photo-slide'));
+            if (!slides.length) return;
+
+            let index = 0;
+            function showSlide(next) {
+                slides[index].classList.remove('is-active');
+                index = next;
+                slides[index].classList.add('is-active');
+            }
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('is-active', i === 0);
+            });
+
+            setInterval(() => {
+                const next = (index + 1) % slides.length;
+                showSlide(next);
+            }, 4000);
+        })();
+
+        // Speed up lobster transfer video slightly (~25%)
+        (function() {
+            const transferVideo = document.getElementById('lobsterTransferVideo');
+            if (!transferVideo) return;
+
+            function setSpeed() {
+                try {
+                    transferVideo.playbackRate = 1.25;
+                } catch (e) {}
+            }
+
+            if (transferVideo.readyState >= 1) {
+                setSpeed();
+            } else {
+                transferVideo.addEventListener('loadedmetadata', setSpeed, { once: true });
+            }
+        })();
+
+        // Testimonials videos: custom controls with exclusive playback and scale-up animation
+        (function() {
+            const testimonialWrappers = document.querySelectorAll('.testimonial-video-wrapper');
+            
+            if (!testimonialWrappers.length) return;
+
+            testimonialWrappers.forEach((wrapper, wrapperIndex) => {
+                const video = wrapper.querySelector('.testimonial-video');
+                const playOverlay = wrapper.querySelector('.video-play-overlay');
+                const controls = wrapper.querySelector('.video-custom-controls');
+                const playBtn = wrapper.querySelector('.video-play-btn');
+                const progress = wrapper.querySelector('.video-progress');
+                const timeDisplay = wrapper.querySelector('.video-time');
+                const volumeBtn = wrapper.querySelector('.video-volume-btn');
+                const fullscreenBtn = wrapper.querySelector('.video-fullscreen-btn');
+
+                if (!video) return;
+
+                // Initialize video: paused, unmuted, volume at 1.0
+                video.pause();
+                video.currentTime = 0;
+                video.muted = false;
+                try { video.volume = 1.0; } catch (e) {}
+
+                // Format time helper
+                function formatTime(seconds) {
+                    const mins = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${mins}:${secs.toString().padStart(2, '0')}`;
+                }
+
+                // Play overlay click
+                playOverlay.addEventListener('click', function() {
+                    video.play();
+                });
+
+                // Play/pause button
+                playBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+
+                // Progress bar
+                progress.addEventListener('input', function() {
+                    const time = (video.duration / 100) * this.value;
+                    video.currentTime = time;
+                });
+
+                // Update progress and time
+                video.addEventListener('timeupdate', function() {
+                    if (video.duration) {
+                        const percent = (video.currentTime / video.duration) * 100;
+                        progress.value = percent;
+                        timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+                    }
+                });
+
+                // Volume button
+                volumeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    video.muted = !video.muted;
+                    const icon = this.querySelector('i');
+                    icon.className = video.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+                });
+
+                // Fullscreen button
+                fullscreenBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    }
+                });
+
+                // When video starts playing
+                video.addEventListener('play', function() {
+                    // Hide play overlay
+                    playOverlay.style.opacity = '0';
+                    playOverlay.style.pointerEvents = 'none';
+                    
+                    // Update play button icon
+                    playBtn.querySelector('i').className = 'fas fa-pause';
+
+                    // Pause all other testimonial videos
+                    testimonialWrappers.forEach((otherWrapper, otherIndex) => {
+                        if (otherIndex !== wrapperIndex) {
+                            const otherVideo = otherWrapper.querySelector('.testimonial-video');
+                            if (otherVideo && !otherVideo.paused) {
+                                otherVideo.pause();
+                            }
+                        }
+                    });
+
+                    // Scale up this video's wrapper
+                    testimonialWrappers.forEach((w, i) => {
+                        if (i === wrapperIndex) {
+                            w.style.transform = 'scale(1.05)';
+                            w.style.zIndex = '10';
+                        } else {
+                            w.style.transform = 'scale(1)';
+                            w.style.zIndex = '1';
+                        }
+                    });
+                });
+
+                // When video is paused
+                video.addEventListener('pause', function() {
+                    // Show play overlay
+                    playOverlay.style.opacity = '1';
+                    playOverlay.style.pointerEvents = 'auto';
+                    
+                    // Update play button icon
+                    playBtn.querySelector('i').className = 'fas fa-play';
+
+                    // Reset scale
+                    wrapper.style.transform = 'scale(1)';
+                    wrapper.style.zIndex = '1';
+                });
+
+                // When video ends
+                video.addEventListener('ended', function() {
+                    // Show play overlay
+                    playOverlay.style.opacity = '1';
+                    playOverlay.style.pointerEvents = 'auto';
+                    
+                    // Reset scale
+                    wrapper.style.transform = 'scale(1)';
+                    wrapper.style.zIndex = '1';
+                });
+            });
+        })();
+
+        // Progressive Zoom Sequence: Auto-play through images with continuous loop
+        (function() {
+            const frames = document.querySelectorAll('.zoom-frame');
+            const overlay = document.getElementById('zoomOverlay');
+            
+            if (!frames.length || !overlay) return;
+
+            let currentFrame = 0;
+            let isPlaying = false;
+            let sequenceInterval = null;
+
+            function showFrame(index) {
+                // Hide all frames
+                frames.forEach(frame => {
+                    frame.style.opacity = '0';
+                });
+                
+                // Show current frame
+                if (frames[index]) {
+                    frames[index].style.opacity = '1';
+                }
+
+                // Show overlay on final frame
+                if (index === frames.length - 1) {
+                    setTimeout(() => {
+                        overlay.style.opacity = '1';
+                    }, 300);
+                } else {
+                    overlay.style.opacity = '0';
+                }
+            }
+
+            function playSequence() {
+                if (isPlaying) return;
+                
+                isPlaying = true;
+                currentFrame = 0;
+                showFrame(currentFrame);
+
+                function nextFrame() {
+                    currentFrame++;
+                    if (currentFrame < frames.length) {
+                        showFrame(currentFrame);
+                        // Continue to next frame after 1 second
+                        sequenceInterval = setTimeout(nextFrame, 1000);
+                    } else {
+                        // Hold on final frame for 5 seconds, then restart
+                        sequenceInterval = setTimeout(() => {
+                            currentFrame = 0;
+                            showFrame(currentFrame);
+                            sequenceInterval = setTimeout(nextFrame, 1000);
+                        }, 5000);
+                    }
+                }
+
+                // Start the sequence
+                sequenceInterval = setTimeout(nextFrame, 1000);
+            }
+
+            function stopSequence() {
+                isPlaying = false;
+                if (sequenceInterval) {
+                    clearTimeout(sequenceInterval);
+                    sequenceInterval = null;
+                }
+            }
+
+            // Use IntersectionObserver to trigger when section is visible
+            if (typeof IntersectionObserver !== 'undefined') {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                            playSequence();
+                        } else {
+                            stopSequence();
+                        }
+                    });
+                }, {
+                    threshold: [0.5]
+                });
+
+                const zoomContainer = document.getElementById('zoomSequence');
+                if (zoomContainer) {
+                    observer.observe(zoomContainer);
+                }
+            }
+        })();
+
+        // AI Training Sequence Animation (slides 11-19, 37-38)
+        (function() {
+            const frames = document.querySelectorAll('.ai-frame');
+            const overlay = document.getElementById('aiOverlay');
+            
+            if (!frames.length || !overlay) return;
+
+            let currentFrame = 0;
+            let isPlaying = false;
+            let sequenceInterval = null;
+
+            function showFrame(index) {
+                // Hide all frames
+                frames.forEach(frame => {
+                    frame.style.opacity = '0';
+                });
+                
+                // Show current frame
+                if (frames[index]) {
+                    frames[index].style.opacity = '1';
+                }
+
+                // Show overlay on final frame
+                if (index === frames.length - 1) {
+                    setTimeout(() => {
+                        overlay.style.opacity = '1';
+                    }, 300);
+                } else {
+                    overlay.style.opacity = '0';
+                }
+            }
+
+            function playSequence() {
+                if (isPlaying) return;
+                
+                isPlaying = true;
+                currentFrame = 0;
+                showFrame(currentFrame);
+
+                function nextFrame() {
+                    currentFrame++;
+                    if (currentFrame < frames.length) {
+                        showFrame(currentFrame);
+                        sequenceInterval = setTimeout(nextFrame, 1400); // 1.4 seconds per frame
+                    } else {
+                        // Sequence complete, stay on final frame, pause for 5 seconds then loop
+                        isPlaying = false;
+                        sequenceInterval = setTimeout(() => {
+                            playSequence();
+                        }, 5000); // 5 second pause before restarting
+                    }
+                }
+
+                // Start the sequence after showing first frame
+                sequenceInterval = setTimeout(nextFrame, 1400);
+            }
+
+            function stopSequence() {
+                if (sequenceInterval) {
+                    clearTimeout(sequenceInterval);
+                    sequenceInterval = null;
+                }
+                isPlaying = false;
+                currentFrame = 0;
+                showFrame(0);
+                overlay.style.opacity = '0';
+            }
+
+            // Scroll-triggered animation
+            if (typeof IntersectionObserver !== 'undefined') {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                            playSequence();
+                        } else {
+                            stopSequence();
+                        }
+                    });
+                }, {
+                    threshold: [0.5]
+                });
+
+                const aiContainer = document.getElementById('aiSequence');
+                if (aiContainer) {
+                    observer.observe(aiContainer);
+                }
+            }
         })();
     </script>
 </body>

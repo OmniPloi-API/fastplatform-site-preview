@@ -14,7 +14,7 @@
         }
         
         .hero-gradient {
-            background: linear-gradient(180deg, #f5f7fb 0%, #eef5ee 100%);
+            background: #ffffff;
         }
         
         .nav-soft {
@@ -80,42 +80,70 @@
         .form-input::placeholder {
             color: #94a3b8;
         }
+        .impact-section {
+            /* Black & white checkerboard metrics band */
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            background-image:
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000),
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000);
+            background-size: 40px 40px; /* square tiles */
+            background-position: 0 0, 20px 20px;
+        }
+        .impact-content {
+            position: relative;
+            margin-top: -4rem;
+        }
+        @media (min-width: 1024px) {
+            .impact-content {
+                margin-top: -5rem;
+            }
+        }
+        
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: none;
+            opacity: 0;
+        }
     </style>
 </head>
 <body class="bg-[#f5f7fb] text-slate-900">
     <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full nav-soft z-50 flex items-stretch">
-        <div class="flex flex-1 items-stretch justify-between">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-stretch">
-                <img src="media/fast-platform-logo.png" alt="FAST Platform" class="h-16 w-auto object-contain">
-            </a>
-            
-            <!-- Menu Links -->
-            <div class="hidden md:flex items-center space-x-8 pr-8">
-                <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
-                <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
-                <a href="solutions.html" class="nav-link text-slate-700 hover:text-slate-900">Solutions</a>
-                <a href="case-studies.html" class="nav-link text-slate-700 hover:text-slate-900">Case Studies</a>
-                <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
-                <a href="contact.html" class="nav-link text-slate-900">Contact</a>
-            </div>
-                
-                <!-- CTA Button -->
-                <a href="#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-white font-semibold inline-flex items-center justify-center">
-                    Request a Demo
-                </a>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-slate-900">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
+    <nav class="fixed top-0 w-full nav-soft z-50">
+        <div class="w-full pr-6 pl-3">
+            <div class="flex items-center justify-between py-1 relative">
+                <!-- Menu Links - Absolutely centered on page -->
+                <div class="hidden md:flex items-center justify-center space-x-8 absolute inset-x-0 left-1/2 -translate-x-1/2">
+                    <a href="index.html" class="nav-link text-slate-700 hover:text-slate-900">Home</a>
+                    <a href="platform.html" class="nav-link text-slate-700 hover:text-slate-900">The Platform</a>
+                    <a href="about.html" class="nav-link text-slate-700 hover:text-slate-900">About Us</a>
+                    <a href="contact.html" class="nav-link text-slate-900">Contact</a>
+                </div>
+
+                <!-- CTA Button + Mobile Menu -->
+                <div class="flex items-center gap-4 ml-auto">
+                    <a href="contact.html#contact-form" class="cta-button px-6 py-2 rounded-l-full rounded-r-none text-black font-semibold inline-flex items-center justify-center">
+                        Request a Demo
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center relative overflow-hidden pt-20">
+    <section class="hero-gradient relative overflow-hidden pt-40 pb-20">
         <div class="container mx-auto px-6">
             <div class="text-center space-y-6">
                 <h1 class="text-5xl md:text-6xl font-bold leading-tight">
@@ -416,8 +444,15 @@
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
+    <!-- Impact Metrics Section - Checkerboard Band Only -->
+	    <section class="impact-section py-20 relative">
+	        <div class="container mx-auto px-6 impact-content">
+	            <!-- Intentionally left without text/icons for now; checkerboard band acts as a visual separator -->
+	        </div>
+	    </section>
+	    
+	    <!-- Footer -->
+    <footer class="bg-black border-t border-black/70 py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- Logo & Mission -->
@@ -436,8 +471,6 @@
                     <ul class="space-y-2 text-slate-500 text-sm">
                         <li><a href="index.html" class="hover:text-cyan-400 transition-colors">Home</a></li>
                         <li><a href="platform.html" class="hover:text-cyan-400 transition-colors">Platform</a></li>
-                        <li><a href="solutions.html" class="hover:text-cyan-400 transition-colors">Solutions</a></li>
-                        <li><a href="case-studies.html" class="hover:text-cyan-400 transition-colors">Case Studies</a></li>
                         <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Us</a></li>
                         <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact</a></li>
                     </ul>
